@@ -1,6 +1,3 @@
-import { Redirect } from 'react-router';
-
-import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -8,15 +5,14 @@ import { ErrorMessage } from '@hookform/error-message';
 import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai';
 //Types
 import { Credentials } from '../../store/auth/types';
-import { State } from '../../store/configureStore';
-//Saga actions
-import { signInRequest } from '../../store/auth/actions';
+
 //Styles
 import * as S from './styles';
-import Button from '../../components/button';
-import Input from '../../components/input';
+import Button from 'components/Button';
+import Input from 'components/Input';
 
-import rtdNotificaImg from '../../assets/rtd-notifica.png';
+import rtdNotificaImg from 'assets/rtd-notifica.png';
+import { useAuth } from 'hooks/use-auth';
 
 const SignInSchema = yup.object().shape({
 	email: yup
@@ -32,17 +28,11 @@ const SignIn = () => {
 		mode: 'onBlur',
 	});
 
-	const isAuthenticated = useSelector<State, boolean>(state => state.auth.isAuthenticated);
-
-	const dispatch = useDispatch();
+	const { tryToSignIn } = useAuth();
 
 	const submitForm = async ({ email, password }: Credentials) => {
-		dispatch(signInRequest({ email, password }));
+		tryToSignIn({ email: 'user@demo.com.br', password: 'Demo@2020' });
 	};
-
-	if (isAuthenticated) {
-		return <Redirect to='/overview' />;
-	}
 
 	return (
 		<S.Container>

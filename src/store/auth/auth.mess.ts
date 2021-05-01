@@ -10,7 +10,7 @@ import { LoadingIndicator } from '../../types/commom';
 import { expectSaga } from 'redux-saga-test-plan';
 import { Credentials } from './types';
 import { throwError } from 'redux-saga-test-plan/providers';
-import sigInService from '../../services/authService';
+import signInService from '../../services/authService';
 
 import authReducer from './reducer';
 const mockAction = {

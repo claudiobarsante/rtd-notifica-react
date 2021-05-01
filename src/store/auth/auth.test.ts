@@ -9,7 +9,7 @@ import { LoadingIndicator } from '../../types/commom';
 
 import { Credentials } from './types';
 
-import sigInService from '../../services/authService';
+import signInService from '../../services/authService';
 
 import authReducer from './reducer';
 
@@ -38,7 +38,7 @@ describe('Testing Saga', () => {
 		};
 		const mockedAxios = axios as jest.Mocked<typeof axios>;
 		const requestSigIn = jest
-			.spyOn(sigInService, user)
+			.spyOn(signInService, user)
 			.mockImplementation(() => Promise.resolve(dummyResponse));
 
 		const dispatched = [];

@@ -7,7 +7,7 @@ import { UserActionTypes } from './actions';
 //ApiClient
 import apiClient from './../../api/client';
 //Services
-import sigInService from '../../services/authService';
+import signInService from '../../services/authService';
 //Types
 import { ResponseCode } from '../../types/response';
 //Utils
@@ -19,7 +19,7 @@ export function* signIn(action: signInRequestType) {
 	//
 	try {
 		put(setLoadingIndicator({ isLoading: true, activityText: 'carregando request' }));
-		const response: AxiosResponse = yield call(sigInService, action.payload);
+		const response: AxiosResponse = yield call(signInService, action.payload);
 
 		if (response.status === ResponseCode.OK) {
 			//
