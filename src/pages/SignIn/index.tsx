@@ -31,7 +31,7 @@ const SignIn = () => {
 	const { tryToSignIn } = useAuth();
 
 	const submitForm = async ({ email, password }: Credentials) => {
-		tryToSignIn({ email: 'user@demo.com.br', password: 'Demo@2020' });
+		tryToSignIn({ email: 'user@deo.com.br', password: 'Demo@2020' });
 	};
 
 	return (
