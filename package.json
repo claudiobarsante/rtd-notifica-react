@@ -73,6 +73,7 @@
 		]
 	},
 	"devDependencies": {
+		"@testing-library/react-hooks": "^5.1.2",
 		"@types/react-router-dom": "^5.1.7",
 		"@types/redux-logger": "^3.0.8",
 		"@types/redux-persist": "^4.3.1",

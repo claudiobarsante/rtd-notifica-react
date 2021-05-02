@@ -9,7 +9,7 @@ function App() {
 		<>
 			<ModalProvider>
 				<GlobalStyle />
-				<ToastProvider>
+				<ToastProvider autoDismiss transitionDuration={400}>
 					<AuthProvider>
 						<Routes />
 					</AuthProvider>

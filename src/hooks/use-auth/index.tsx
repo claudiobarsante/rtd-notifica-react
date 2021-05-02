@@ -4,8 +4,7 @@ import { LoadingIndicator } from 'types/commom';
 import { ResponseError } from 'types/response';
 import signInService from './../../services/authService';
 import { useToasts } from 'react-toast-notifications';
-//Types
-import { ResponseCode } from 'types/response';
+
 //Utils
 import { format } from 'utils/formatErrorMessage';
 
@@ -22,8 +21,9 @@ export type Credentials = {
 };
 
 export type AuthContextData = {
-	currentUser?: CurrentUser;
+	currentUser: CurrentUser;
 	tryToSignIn(credentials: Credentials): void;
+	setUser(currentUser: Test): void;
 };
 
 export const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -31,6 +31,14 @@ export const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 export type AuthProviderProps = {
 	children: React.ReactNode;
 };
+
+export type Test = {
+	user: CurrentUser;
+	token: string;
+};
+
+const USER_KEY = '@rtd-notifica:user';
+const TOKEN_KEY = '@rtd-notifica:token';
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
 	//
@@ -46,7 +54,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 				const { access_token, claims, expires_in, userName } = response.data;
 				const userClaims = JSON.parse(claims);
 				const expirationDate = new Date(
-					new Date().getTime() + parseInt(expires_in) * 1000 //? *1000 to converte in miliseconds
+					new Date().getTime() + parseInt(expires_in) * 1000 //? *1000 to convert in miliseconds
 				);
 
 				const currentUser = new CurrentUser(
@@ -59,32 +67,46 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 					expirationDate
 				);
 
-				localStorage.setItem('@@rtd-notifica:token', access_token);
-				localStorage.setItem('@rtd-notifica:user', JSON.stringify(currentUser));
+				localStorage.setItem(TOKEN_KEY, access_token);
+				localStorage.setItem(USER_KEY, JSON.stringify(currentUser));
 
-				setData({
+				// setData({
+				// 	user: currentUser,
+				// 	error: { code: 0, message: '' },
+				// 	loadingIndicator: { isLoading: false, activityText: '' },
+				// 	token: access_token,
+				// });
+
+				setUser({
 					user: currentUser,
-					error: { code: 0, message: '' },
-					loadingIndicator: { isLoading: false, activityText: '' },
 					token: access_token,
 				});
 			} catch (error) {
-				const { code, message } = format(error.toString());
-				addToast(message, { appearance: 'error' });
+				const { message } = format(error.toString());
+				addToast(message, {
+					appearance: 'error',
+				});
 			}
 		},
 		[addToast]
 	);
+
+	const setUser = (obj: Test) => {
+		setData({
+			user: obj.user,
+			error: { code: 0, message: '' },
+			loadingIndicator: { isLoading: false, activityText: '' },
+			token: obj.token,
+		});
+	};
+
 	return (
-		<AuthContext.Provider value={{ currentUser: data?.user, tryToSignIn }}>
+		<AuthContext.Provider value={{ currentUser: data.user, tryToSignIn, setUser }}>
 			{children}
 		</AuthContext.Provider>
 	);
 };
 
-const useAuth = (): AuthContextData => {
-	const context = useContext(AuthContext);
-	return context;
-};
+const useAuth = () => useContext(AuthContext);
 
 export { AuthProvider, useAuth };
