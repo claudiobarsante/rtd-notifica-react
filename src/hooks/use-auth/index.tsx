@@ -20,21 +20,21 @@ export type Credentials = {
 	password: string;
 };
 
+export type UserInfo = {
+	user: CurrentUser;
+	token: string;
+};
+
 export type AuthContextData = {
 	currentUser: CurrentUser;
-	tryToSignIn(credentials: Credentials): void;
-	setUser(currentUser: Test): void;
+	tryToSignIn: (credentials: Credentials) => void;
+	setCurrentUser: (currentUser: UserInfo) => void;
 };
 
 export const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export type AuthProviderProps = {
 	children: React.ReactNode;
-};
-
-export type Test = {
-	user: CurrentUser;
-	token: string;
 };
 
 const USER_KEY = '@rtd-notifica:user';
@@ -77,7 +77,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 				// 	token: access_token,
 				// });
 
-				setUser({
+				setCurrentUser({
 					user: currentUser,
 					token: access_token,
 				});
@@ -91,17 +91,17 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 		[addToast]
 	);
 
-	const setUser = (obj: Test) => {
+	const setCurrentUser = (info: UserInfo) => {
 		setData({
-			user: obj.user,
+			user: info.user,
 			error: { code: 0, message: '' },
 			loadingIndicator: { isLoading: false, activityText: '' },
-			token: obj.token,
+			token: info.token,
 		});
 	};
 
 	return (
-		<AuthContext.Provider value={{ currentUser: data.user, tryToSignIn, setUser }}>
+		<AuthContext.Provider value={{ currentUser: data.user, tryToSignIn, setCurrentUser }}>
 			{children}
 		</AuthContext.Provider>
 	);

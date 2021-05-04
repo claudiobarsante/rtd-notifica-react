@@ -18,15 +18,15 @@ describe('useAuth', () => {
 			wrapper,
 		});
 		act(() => {
-			result.current.setUser({
+			result.current.setCurrentUser({
 				user,
 				token: 'teste',
 			});
 		});
 
-		// act(() => {
-		// 	result.current.tryToSignIn({ email: 'user@demo.com.br', password: 'Demo@2020' });
-		// });
+		act(() => {
+			result.current.tryToSignIn({ email: 'uer@demo.com.br', password: 'Demo@2020' });
+		});
 		expect(result.current.currentUser).toMatchObject({
 			nickname: 'teste',
 			institucionalId: 1,
@@ -36,6 +36,7 @@ describe('useAuth', () => {
 			expirationDate: hj,
 			isAuthenticated: true,
 		});
+		console.log('error ', result.error);
 		//expect(result.current.tryToSignIn).toHaveBeenCalled();
 		//expect(result.current.tryToSignIn).toHaveBeenCalledTimes(1);
 	});
