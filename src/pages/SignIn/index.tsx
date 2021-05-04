@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { ErrorMessage } from '@hookform/error-message';
 import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai';
 //Types
-import { Credentials } from '../../store/auth/types';
+import { Credentials } from 'hooks/use-auth';
 
 //Styles
 import * as S from './styles';
@@ -13,6 +13,8 @@ import Input from 'components/Input';
 
 import rtdNotificaImg from 'assets/rtd-notifica.png';
 import { useAuth } from 'hooks/use-auth';
+import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 const SignInSchema = yup.object().shape({
 	email: yup
@@ -28,11 +30,15 @@ const SignIn = () => {
 		mode: 'onBlur',
 	});
 
-	const { tryToSignIn } = useAuth();
+	const { tryToSignIn, currentUser } = useAuth();
 
 	const submitForm = async ({ email, password }: Credentials) => {
-		tryToSignIn({ email: 'user@deo.com.br', password: 'Demo@2020' });
+		tryToSignIn({ email: 'user@demo.com.br', password: 'Demo@2020' });
 	};
+
+	if (currentUser.isAuthenticated) {
+		return <Redirect to='/overview' />;
+	}
 
 	return (
 		<S.Container>

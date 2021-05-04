@@ -8,6 +8,7 @@
 		"@testing-library/jest-dom": "^5.11.4",
 		"@testing-library/react": "^11.1.0",
 		"@testing-library/user-event": "^12.1.10",
+		"@types/axios-mock-adapter": "^1.10.0",
 		"@types/jest": "^26.0.15",
 		"@types/node": "^12.0.0",
 		"@types/react": "^17.0.0",
@@ -78,6 +79,7 @@
 		"@types/redux-logger": "^3.0.8",
 		"@types/redux-persist": "^4.3.1",
 		"@types/styled-components": "^5.1.9",
+		"axios-mock-adapter": "^1.19.0",
 		"cypress": "^7.1.0",
 		"redux-saga-test-plan": "^4.0.1"
 	}

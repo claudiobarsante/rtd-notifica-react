@@ -2,6 +2,7 @@ import { act, renderHook } from '@testing-library/react-hooks';
 import { AuthProvider, useAuth, AuthProviderProps } from '.';
 import { ToastProvider } from 'react-toast-notifications';
 import { CurrentUser } from 'models/User';
+import MockAdapter from 'axios-mock-adapter';
 
 describe('useAuth', () => {
 	it('should return AuthState if it exists', () => {
@@ -17,6 +18,7 @@ describe('useAuth', () => {
 		const { result } = renderHook(() => useAuth(), {
 			wrapper,
 		});
+
 		act(() => {
 			result.current.setCurrentUser({
 				user,

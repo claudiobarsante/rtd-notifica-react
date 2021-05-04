@@ -4,6 +4,7 @@ import { LoadingIndicator } from 'types/commom';
 import { ResponseError } from 'types/response';
 import signInService from './../../services/authService';
 import { useToasts } from 'react-toast-notifications';
+import { useHistory } from 'react-router';
 
 //Utils
 import { format } from 'utils/formatErrorMessage';
@@ -38,7 +39,7 @@ export type AuthProviderProps = {
 };
 
 const USER_KEY = '@rtd-notifica:user';
-const TOKEN_KEY = '@rtd-notifica:token';
+export const TOKEN_KEY = '@rtd-notifica:token';
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
 	//
@@ -50,7 +51,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 			//
 			try {
 				const response = await signInService({ email, password });
-
+				console.log('response auth', response.data);
 				const { access_token, claims, expires_in, userName } = response.data;
 				const userClaims = JSON.parse(claims);
 				const expirationDate = new Date(
@@ -92,6 +93,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 	);
 
 	const setCurrentUser = (info: UserInfo) => {
+		console.log('passei ', info.token);
 		setData({
 			user: info.user,
 			error: { code: 0, message: '' },

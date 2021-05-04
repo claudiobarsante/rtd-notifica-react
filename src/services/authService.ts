@@ -1,7 +1,7 @@
 import apiClient from '../api/client';
 import { Credentials } from 'hooks/use-auth';
 
-const signInService = ({ email, password }: Credentials) =>
+export const signInService = ({ email, password }: Credentials) =>
 	apiClient({
 		method: 'post',
 		headers: { 'Content-Type': 'text/plain' },
