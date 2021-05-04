@@ -1,6 +1,7 @@
 import { Route, RouteProps, Redirect } from 'react-router-dom';
 import React from 'react';
 import { useAuth } from 'hooks/use-auth';
+import Navbar from 'components/Navbar';
 interface Props extends RouteProps {
 	isProtected?: boolean;
 	component: React.ComponentType;
@@ -18,7 +19,12 @@ const ProtectedRoute = ({ isProtected = false, component: Component, ...rest }: 
 					(!isAuthenticated && !isProtected) ||
 					(isAuthenticated && !isProtected)
 				) {
-					return <Component />;
+					return (
+						<>
+							<Navbar />
+							<Component />
+						</>
+					);
 				} else if (!isAuthenticated && isProtected) {
 					return <Redirect to={{ pathname: '/', state: { from: props.location } }} />;
 				}

@@ -11,7 +11,7 @@ import * as S from './styles';
 import Button from 'components/Button';
 import Input from 'components/Input';
 
-import rtdNotificaImg from 'assets/rtd-notifica.png';
+import rtdNotificaImg from 'assets/rtd-notifica-blue.png';
 import { useAuth } from 'hooks/use-auth';
 import React from 'react';
 import { Redirect } from 'react-router-dom';
@@ -36,49 +36,54 @@ const SignIn = () => {
 		tryToSignIn({ email: 'user@demo.com.br', password: 'Demo@2020' });
 	};
 
-	if (currentUser.isAuthenticated) {
+	if (currentUser?.isAuthenticated) {
 		return <Redirect to='/overview' />;
 	}
 
 	return (
 		<S.Container>
-			<div>
-				<img src={rtdNotificaImg} alt='Logo da aplicação RtdNotifica App' />
+			<S.SignIn>
+				<S.Art>
+					<div>
+						<img src={rtdNotificaImg} alt='Logo da aplicação RtdNotifica App' />
+					</div>
+				</S.Art>
+				<S.Form>
+					<form onSubmit={handleSubmit(submitForm)}>
+						<ErrorMessage
+							name='email'
+							errors={errors}
+							render={({ message }) => <p id='test-email-error'>{message}</p>}
+						/>
+						<Input
+							id='email'
+							name='email'
+							type='text'
+							placeholder='E-mail do usuário'
+							inputRef={register}
+							error={errors.email?.message}
+							icon={AiOutlineUser}
+						/>
 
-				<form onSubmit={handleSubmit(submitForm)}>
-					<ErrorMessage
-						name='email'
-						errors={errors}
-						render={({ message }) => <p id='test-email-error'>{message}</p>}
-					/>
-					<Input
-						id='email'
-						name='email'
-						type='text'
-						placeholder='E-mail do usuário'
-						inputRef={register}
-						error={errors.email?.message}
-						icon={AiOutlineUser}
-					/>
+						<ErrorMessage
+							name='password'
+							errors={errors}
+							render={({ message }) => <p id='test-password-error'>{message}</p>}
+						/>
+						<Input
+							id='password'
+							name='password'
+							type='password'
+							placeholder='Senha do usuário'
+							inputRef={register}
+							error={errors.password?.message}
+							icon={AiOutlineLock}
+						/>
 
-					<ErrorMessage
-						name='password'
-						errors={errors}
-						render={({ message }) => <p id='test-password-error'>{message}</p>}
-					/>
-					<Input
-						id='password'
-						name='password'
-						type='password'
-						placeholder='Senha do usuário'
-						inputRef={register}
-						error={errors.password?.message}
-						icon={AiOutlineLock}
-					/>
-
-					<Button type='submit'>Entrar</Button>
-				</form>
-			</div>
+						<Button type='submit'>Entrar</Button>
+					</form>
+				</S.Form>
+			</S.SignIn>
 		</S.Container>
 	);
 };

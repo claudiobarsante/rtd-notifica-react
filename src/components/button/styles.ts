@@ -1,21 +1,26 @@
 import styled from 'styled-components';
-import { shade } from 'polished';
 
 export const Container = styled.button`
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: 34rem;
-	height: 5.6rem;
+	height: 3rem;
 	border-radius: 1rem;
 	border: 0;
-	background: var(--purple);
+	background: var(--primary);
 	color: var(--white);
 	font-weight: 500;
 	margin-top: 2.4rem;
-	transition: background-color 0.2s;
+
 	letter-spacing: 0.2rem;
-	padding: 1.8rem 2rem;
+	padding: 3rem;
+	text-align: center;
 	font-size: 2rem;
 
+	transition: filter 0.2s;
+
 	&:hover {
-		background: ${shade(0.2, '#788EEC')};
+		filter: brightness(0.9);
 	}
 `;

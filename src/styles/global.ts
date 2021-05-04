@@ -4,11 +4,12 @@ export default createGlobalStyle`
 *,*::after,*::before {
     margin:0;
     padding:0;
-    box-sizing:content-box;
+    box-sizing:border-box;
 }
 
 html{
     font-size:62.5%;
+    min-height:100%;
 }
 
 :root {
@@ -20,19 +21,31 @@ html{
   --gray:#f3f2f2;
   --gray-hard:#666360;
   --background-modal:#f0f2f5;
+  --primary:#0099ff;
+  --sm:768px;
 }
 
 
 body{
+   background:#f2f5f7;
     -webkit-font-smoothing: antialiased;
 }
 
+body, input, button{
+  font-family: 'Roboto', serif;
+  font-size:1.6rem;
 
-  
+}
 
-    button {
-        cursor:pointer;
-    }
+h1,h2,h3,h4,h5,h6, strong{
+  font-weight:700;
+}
+
+
+button {
+  cursor:pointer;
+}  
+
 
 
 `;
