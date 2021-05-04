@@ -48,6 +48,12 @@ export const SignIn = styled.div`
 	height: 50rem;
 	border-radius: 1rem;
 	background: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+
+	&:hover {
+		box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+	}
 	@media (max-width: 768px) {
 		flex-direction: column;
 		width: 100vw;
