@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 
-interface ContainerProps {
+type ContainerProps = {
 	isFocused: boolean;
 	isErrored: boolean;
-}
+};
 
 export const Container = styled.div<ContainerProps>`
-	width: 34rem;
+	width: 100%;
 	height: 5.6rem;
 	background: var(--gray);
 	border-radius: 1rem;
@@ -16,12 +16,12 @@ export const Container = styled.div<ContainerProps>`
 
 	display: flex;
 	align-items: center;
-	margin-top: 0.8rem;
+	margin-top: 1rem;
 
 	${props =>
 		props.isFocused &&
 		css`
-			border: 3px solid var(--purple);
+			border: 3px solid var(--primary);
 			transition: border-color 1s, color 1s;
 		`}
 
@@ -49,6 +49,6 @@ export const Container = styled.div<ContainerProps>`
 
 	svg {
 		margin-right: 1.6rem;
-		color: var(--purple);
+		color: var(--primary);
 	}
 `;
