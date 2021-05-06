@@ -20,6 +20,7 @@ html{
   --white:#F4EDE8;
   --gray:#f3f2f2;
   --gray-hard:#666360;
+  --gray-dark: #42403e;
   --background-modal:#f0f2f5;
   --primary:#0099ff;
   --sm:768px;

@@ -34,7 +34,7 @@ const SignIn = () => {
 	const { tryToSignIn, currentUser, isLoading } = useAuth();
 
 	const submitForm = async ({ email, password }: Credentials) => {
-		tryToSignIn({ email: 'user@dem.com.br', password: 'Demo@2020' });
+		tryToSignIn({ email: 'user@demo.com.br', password: 'Demo@2020' });
 	};
 
 	if (currentUser?.isAuthenticated) {
@@ -50,12 +50,8 @@ const SignIn = () => {
 					</div>
 				</S.Art>
 				<S.Form>
+					<h1>Login</h1>
 					<form onSubmit={handleSubmit(submitForm)}>
-						<ErrorMessage
-							name='email'
-							errors={errors}
-							render={({ message }) => <p id='test-email-error'>{message}</p>}
-						/>
 						<Input
 							id='email'
 							name='email'
@@ -65,12 +61,12 @@ const SignIn = () => {
 							error={errors.email?.message}
 							icon={AiOutlineUser}
 						/>
-
 						<ErrorMessage
-							name='password'
+							name='email'
 							errors={errors}
-							render={({ message }) => <p id='test-password-error'>{message}</p>}
+							render={({ message }) => <p id='test-email-error'>{message}</p>}
 						/>
+
 						<Input
 							id='password'
 							name='password'
@@ -79,6 +75,11 @@ const SignIn = () => {
 							inputRef={register}
 							error={errors.password?.message}
 							icon={AiOutlineLock}
+						/>
+						<ErrorMessage
+							name='password'
+							errors={errors}
+							render={({ message }) => <p id='test-password-error'>{message}</p>}
 						/>
 
 						<Button type='submit'>Entrar</Button>

@@ -8,7 +8,8 @@ interface Props extends RouteProps {
 }
 const ProtectedRoute = ({ isProtected = false, component: Component, ...rest }: Props) => {
 	const { currentUser } = useAuth();
-	const isAuthenticated = currentUser?.isAuthenticated;
+	const isAuthenticated = currentUser.isAuthenticated;
+	console.log('current ', currentUser.isAuthenticated);
 
 	return (
 		<Route
@@ -21,7 +22,7 @@ const ProtectedRoute = ({ isProtected = false, component: Component, ...rest }: 
 				) {
 					return (
 						<>
-							<Navbar />
+							<h1>Vou bora</h1>
 							<Component />
 						</>
 					);

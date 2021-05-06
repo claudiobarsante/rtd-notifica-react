@@ -16,20 +16,20 @@ export const Container = styled.div<ContainerProps>`
 
 	display: flex;
 	align-items: center;
-	margin-top: 1rem;
+	margin-top: 1.9rem;
 
 	${props =>
 		props.isFocused &&
 		css`
-			border: 3px solid var(--primary);
-			transition: border-color 1s, color 1s;
+			border: 1px solid var(--primary);
+			transition: border-color 2s, color 2s;
 		`}
 
 	${props =>
 		props.isErrored &&
 		css`
-			border: 3px solid var(--error);
-			transition: border-color 1s, color 1s;
+			border: 1px solid var(--error);
+			transition: border-color 2s, color 2s;
 		`}  
     
 

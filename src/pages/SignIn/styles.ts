@@ -15,6 +15,10 @@ export const Container = styled.div`
 	background-size: contain;
 	background-position: center; */
 	height: 100vh;
+	p {
+		color: var(--error);
+		font-size: 1.2rem;
+	}
 	//margin-top: 10rem;
 	/* width: 120rem;
 	height: 50rem;
@@ -101,6 +105,11 @@ export const Form = styled.div`
 	height: inherit;
 	p {
 		color: var(--error);
+	}
+	h1 {
+		font-weight: 300;
+		color: var(--gray-dark);
+		margin-bottom: 3rem;
 	}
 `;
 export const ActivityIndicatorContainer = styled.div`

@@ -7,7 +7,7 @@ type Props = {
 const ActivityIndicator = ({ isLoading = false }: Props) => {
 	return (
 		<Container>
-			<SwapSpinner size={45} color={'#ff9000'} loading={isLoading} />
+			<SwapSpinner size={45} color={'#73bd73'} loading={isLoading} />
 		</Container>
 	);
 };

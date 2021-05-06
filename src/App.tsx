@@ -3,6 +3,7 @@ import Routes from '../src/routes/index';
 import { ModalProvider } from 'styled-react-modal';
 import { AuthProvider } from 'hooks/use-auth';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 function App() {
 	return (
