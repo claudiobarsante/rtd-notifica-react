@@ -2,7 +2,8 @@ import { CurrentUser } from 'models/User';
 import { createContext, useContext, useState, useCallback } from 'react';
 import { ResponseError } from 'types/response';
 import signInService from './../../services/authService';
-import { useToasts } from 'react-toast-notifications';
+import { toast, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 //Utils
 import { format } from 'utils/formatErrorMessage';
@@ -43,7 +44,6 @@ export const TOKEN_KEY = '@rtd-notifica:token';
 const AuthProvider = ({ children }: AuthProviderProps) => {
 	//
 	const [data, setData] = useState<AuthState>({} as AuthState);
-	const { addToast } = useToasts();
 
 	const setCurrentUser = useCallback(
 		(info: UserInfo) => {
@@ -57,9 +57,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 			//
 			try {
 				setData({ ...data, isLoading: true });
-				console.log('data ', data);
+
 				const response = await signInService({ email, password });
-				console.log('response auth', response.data);
+
 				const { access_token, claims, expires_in, userName } = response.data;
 				const userClaims = JSON.parse(claims);
 				const expirationDate = new Date(
@@ -85,14 +85,20 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 				});
 			} catch (error) {
 				const { message } = format(error.toString());
-				addToast(message, {
-					appearance: 'error',
+				toast.error(`🙍‍♂️ ${message}`, {
+					transition: Zoom,
+					position: 'top-right',
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
 				});
 			}
 			setData({ ...data, isLoading: false });
 		},
 
-		[addToast, data, setCurrentUser]
+		[data, setCurrentUser]
 	);
 
 	return (

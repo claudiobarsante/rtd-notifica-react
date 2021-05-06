@@ -13,7 +13,7 @@ import Input from 'components/Input';
 
 import rtdNotificaImg from 'assets/rtd-notifica-blue.png';
 import { useAuth } from 'hooks/use-auth';
-import React, { useState } from 'react';
+
 import { Redirect } from 'react-router-dom';
 import ActivityIndicator from 'components/Activity-Indicator';
 
