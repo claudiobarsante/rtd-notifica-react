@@ -103,3 +103,7 @@ export const Form = styled.div`
 		color: var(--error);
 	}
 `;
+export const ActivityIndicatorContainer = styled.div`
+	padding-top: 4rem;
+	height: 4rem;
+`;

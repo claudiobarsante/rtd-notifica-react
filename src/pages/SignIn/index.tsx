@@ -13,8 +13,9 @@ import Input from 'components/Input';
 
 import rtdNotificaImg from 'assets/rtd-notifica-blue.png';
 import { useAuth } from 'hooks/use-auth';
-import React from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import ActivityIndicator from 'components/Activity-Indicator';
 
 const SignInSchema = yup.object().shape({
 	email: yup
@@ -30,10 +31,10 @@ const SignIn = () => {
 		mode: 'onBlur',
 	});
 
-	const { tryToSignIn, currentUser } = useAuth();
+	const { tryToSignIn, currentUser, isLoading } = useAuth();
 
 	const submitForm = async ({ email, password }: Credentials) => {
-		tryToSignIn({ email: 'user@demo.com.br', password: 'Demo@2020' });
+		tryToSignIn({ email: 'user@dem.com.br', password: 'Demo@2020' });
 	};
 
 	if (currentUser?.isAuthenticated) {
@@ -82,6 +83,9 @@ const SignIn = () => {
 
 						<Button type='submit'>Entrar</Button>
 					</form>
+					<S.ActivityIndicatorContainer>
+						{<ActivityIndicator isLoading={isLoading} />}
+					</S.ActivityIndicatorContainer>
 				</S.Form>
 			</S.SignIn>
 		</S.Container>

@@ -1,10 +1,8 @@
 import { CurrentUser } from 'models/User';
 import { createContext, useContext, useState, useCallback } from 'react';
-import { LoadingIndicator } from 'types/commom';
 import { ResponseError } from 'types/response';
 import signInService from './../../services/authService';
 import { useToasts } from 'react-toast-notifications';
-import { useHistory } from 'react-router';
 
 //Utils
 import { format } from 'utils/formatErrorMessage';
@@ -12,8 +10,8 @@ import { format } from 'utils/formatErrorMessage';
 export type AuthState = {
 	user: CurrentUser;
 	error: ResponseError;
-	loadingIndicator: LoadingIndicator;
 	token: string;
+	isLoading: boolean;
 };
 
 export type Credentials = {
@@ -28,6 +26,7 @@ export type UserInfo = {
 
 export type AuthContextData = {
 	currentUser: CurrentUser;
+	isLoading: boolean;
 	tryToSignIn: (credentials: Credentials) => void;
 	setCurrentUser: (currentUser: UserInfo) => void;
 };
@@ -46,10 +45,19 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 	const [data, setData] = useState<AuthState>({} as AuthState);
 	const { addToast } = useToasts();
 
+	const setCurrentUser = useCallback(
+		(info: UserInfo) => {
+			setData({ ...data, user: info.user, error: { code: 0, message: '' }, token: info.token });
+		},
+		[data]
+	);
+
 	const tryToSignIn = useCallback(
 		async ({ email, password }) => {
 			//
 			try {
+				setData({ ...data, isLoading: true });
+				console.log('data ', data);
 				const response = await signInService({ email, password });
 				console.log('response auth', response.data);
 				const { access_token, claims, expires_in, userName } = response.data;
@@ -71,13 +79,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 				localStorage.setItem(TOKEN_KEY, access_token);
 				localStorage.setItem(USER_KEY, JSON.stringify(currentUser));
 
-				// setData({
-				// 	user: currentUser,
-				// 	error: { code: 0, message: '' },
-				// 	loadingIndicator: { isLoading: false, activityText: '' },
-				// 	token: access_token,
-				// });
-
 				setCurrentUser({
 					user: currentUser,
 					token: access_token,
@@ -88,22 +89,21 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 					appearance: 'error',
 				});
 			}
+			setData({ ...data, isLoading: false });
 		},
-		[addToast]
+
+		[addToast, data, setCurrentUser]
 	);
 
-	const setCurrentUser = (info: UserInfo) => {
-		console.log('passei ', info.token);
-		setData({
-			user: info.user,
-			error: { code: 0, message: '' },
-			loadingIndicator: { isLoading: false, activityText: '' },
-			token: info.token,
-		});
-	};
-
 	return (
-		<AuthContext.Provider value={{ currentUser: data.user, tryToSignIn, setCurrentUser }}>
+		<AuthContext.Provider
+			value={{
+				currentUser: data.user,
+				isLoading: data.isLoading,
+				tryToSignIn,
+				setCurrentUser,
+			}}
+		>
 			{children}
 		</AuthContext.Provider>
 	);
