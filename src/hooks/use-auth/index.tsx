@@ -3,9 +3,10 @@ import { createContext, useContext, useState, useCallback } from 'react';
 import { ResponseError } from 'types/response';
 import signInService from './../../services/authService';
 import { toast, Slide } from 'react-toastify';
-
+import axios from 'axios';
 //Utils
 import { format } from 'utils/formatErrorMessage';
+import apiClient from 'api/client';
 
 export type AuthState = {
 	user: CurrentUser;
@@ -28,7 +29,6 @@ export type AuthContextData = {
 	currentUser: CurrentUser;
 	isLoading: boolean;
 	tryToSignIn: (credentials: Credentials) => void;
-	//setCurrentUser: (currentUser: UserInfo) => void;
 };
 
 export const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -59,15 +59,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 	//
 	const [data, setData] = useState<AuthState>(INITIAL_STATE);
 
-	// const setCurrentUser = useCallback(
-	// 	(info: UserInfo) => {
-	// 		console.log('info ', info);
-	// 		setData({ ...data, user: info.user, error: { code: 0, message: '' }, token: info.token });
-	// 	},
-	// 	[data]
-	// );
-
-	console.log('data user ', data.user);
 	const tryToSignIn = useCallback(
 		async ({ email, password }) => {
 			//
@@ -95,14 +86,10 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 				localStorage.setItem(TOKEN_KEY, access_token);
 				localStorage.setItem(USER_KEY, JSON.stringify(currentUser));
 
-				// setCurrentUser({
-				// 	user: currentUser,
-				// 	token: access_token,
-				// });
 				setData(data => ({ ...data, user: currentUser, token: access_token }));
 			} catch (error) {
-				console.log('error ', error.toString());
 				const { message } = format(error.toString());
+
 				toast.error(`🙍‍♂️ ${message}`, {
 					transition: Slide,
 					position: 'top-right',
@@ -116,7 +103,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 			setData(data => ({ ...data, isLoading: false }));
 		},
 
-		[data]
+		[]
 	);
 
 	return (
