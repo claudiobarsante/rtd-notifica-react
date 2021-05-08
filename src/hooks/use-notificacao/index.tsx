@@ -2,6 +2,7 @@ import { getAllNotificacoesService } from 'services/notificacaoService';
 import { createContext, useCallback, useContext, useState } from 'react';
 //Utils
 import { format } from 'utils/formatErrorMessage';
+import { ResponseError } from 'types/response';
 
 export type Notificacao = {
 	bairro: string;
@@ -19,16 +20,24 @@ export type Notificacao = {
 
 export type NotificacoesState = {
 	all: Notificacao[];
-	//error: ResponseError;
+	error: ResponseError;
 	//filteredNotificacoes: Notificacao[];
 	isLoading: boolean;
 	lastUpdate: Date;
 };
 
+const INITIAL_STATE: NotificacoesState = {
+	all: [],
+	//filteredNotificacoes: [],
+	error: { code: 0, message: '' },
+	isLoading: false,
+	lastUpdate: new Date(),
+};
+
 export type NotificacoesContextData = {
-	//all: Notificacao[];
+	all: Notificacao[];
 	isLoading: boolean;
-	getAllByOficioId: (oficioId: number) => Promise<Notificacao[]>;
+	getAllByOficioId: (oficioId: number) => void;
 };
 
 export const NotificacoesContext = createContext<NotificacoesContextData>(
@@ -40,28 +49,25 @@ export type NotificacoesProviderProps = {
 };
 
 const NotificacoesProvider = ({ children }: NotificacoesProviderProps) => {
-	const [data, setData] = useState<NotificacoesState>({} as NotificacoesState);
+	const [data, setData] = useState<NotificacoesState>(INITIAL_STATE);
 
-	const getAllByOficioId = useCallback(
-		async (oficioId: number) => {
-			let result: Notificacao[] = [];
-			try {
-				setData({ ...data, isLoading: true });
-				const response = await getAllNotificacoesService(oficioId);
-				const notificacoes: Notificacao[] = JSON.parse(response.data);
-				result = notificacoes;
-			} catch (error) {
-				const { message } = format(error.toString());
-				console.log('message error: ' + message);
-			}
-			setData({ ...data, isLoading: true });
-			return result;
-		},
-		[data]
-	);
+	const getAllByOficioId = useCallback(async (oficioId: number) => {
+		try {
+			setData(data => ({ ...data, isLoading: true }));
+			const response = await getAllNotificacoesService(oficioId);
+			const notificacoes: Notificacao[] = JSON.parse(response.data);
+			setData(data => ({ ...data, all: notificacoes }));
+		} catch (error) {
+			const { code, message } = format(error.toString());
+			setData(data => ({ ...data, error: { code, message } }));
+		}
+		setData(data => ({ ...data, isLoading: false }));
+	}, []);
 
 	return (
-		<NotificacoesContext.Provider value={{ isLoading: data.isLoading, getAllByOficioId }}>
+		<NotificacoesContext.Provider
+			value={{ isLoading: data.isLoading, all: data.all, getAllByOficioId }}
+		>
 			{children}
 		</NotificacoesContext.Provider>
 	);

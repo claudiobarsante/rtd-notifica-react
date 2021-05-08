@@ -1,9 +1,11 @@
-import GlobalStyle from './styles/global';
-import Routes from '../src/routes/index';
 import { ModalProvider } from 'styled-react-modal';
-import { AuthProvider } from 'hooks/use-auth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+//Components
+import { AppProvider } from 'hooks';
+import Routes from 'routes';
+//Styles
+import GlobalStyle from 'styles/global';
 
 function App() {
 	return (
@@ -11,9 +13,9 @@ function App() {
 			<ModalProvider>
 				<GlobalStyle />
 				<ToastContainer />
-				<AuthProvider>
+				<AppProvider>
 					<Routes />
-				</AuthProvider>
+				</AppProvider>
 			</ModalProvider>
 		</>
 	);
