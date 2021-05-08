@@ -12,6 +12,7 @@ import Button from 'components/Button';
 import Input from 'components/Input';
 
 import rtdNotificaImg from 'assets/rtd-notifica-blue.png';
+import splashImg from 'assets/splash.png';
 import { useAuth } from 'hooks/use-auth';
 
 import { Redirect } from 'react-router-dom';
@@ -46,7 +47,7 @@ const SignIn = () => {
 			<S.SignIn>
 				<S.Art>
 					<div>
-						<img src={rtdNotificaImg} alt='Logo da aplicação RtdNotifica App' />
+						<img src={splashImg} alt='Logo da aplicação RtdNotifica App' />
 					</div>
 				</S.Art>
 				<S.Form>

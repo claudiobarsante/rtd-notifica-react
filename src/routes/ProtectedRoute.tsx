@@ -22,7 +22,7 @@ const ProtectedRoute = ({ isProtected = false, component: Component, ...rest }: 
 				) {
 					return (
 						<>
-							<h1>Vou bora</h1>
+							<Navbar />
 							<Component />
 						</>
 					);
