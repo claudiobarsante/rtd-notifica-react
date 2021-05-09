@@ -5,13 +5,13 @@ import { useAuth } from 'hooks/use-auth';
 import { Notificacao, useNotificacao } from 'hooks/use-notificacao';
 import NotificacaoItem from '../../components/notificacao/Notificacao-Item';
 import * as S from './styles';
-import multiImg from 'assets/teste2.png';
+import multiImg from 'assets/multi-transp.png';
 const Overview = () => {
 	//const [notificacoes, setNotificacoes] = useState<Notificacao[]>({} as Notificacao[]);
 	const { getAllByOficioId, isLoading, all } = useNotificacao();
 	const { currentUser } = useAuth();
 	const [totalPages, setTotalPages] = useState<number>(0);
-	const [recordsPerPage, setRecordsPerPage] = useState<number>(2);
+	const [recordsPerPage, setRecordsPerPage] = useState<number>(5);
 	const [page, setPage] = useState<Notificacao[]>([]);
 	const [currentPage, setCurrentPage] = useState<number>(1);
 

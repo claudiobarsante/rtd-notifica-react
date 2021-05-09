@@ -33,13 +33,13 @@ body{
 }
 
 body, input, button{
-  font-family: 'Roboto', serif;
+  font-family: 'Poppins', serif;
   font-size:1.6rem;
 
 }
 
 h1,h2,h3,h4,h5,h6, strong{
-  font-weight:700;
+  font-weight:500;
 }
 
 

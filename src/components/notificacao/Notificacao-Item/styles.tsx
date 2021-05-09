@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const NotificacaoContainer = styled.div`
-	width: 50rem;
-	height: 15rem;
+	width: 60rem;
+	height: 10rem;
 	border-radius: 1rem;
 	background: white;
 	margin-bottom: 2rem;

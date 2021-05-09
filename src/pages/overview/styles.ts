@@ -2,46 +2,46 @@ import styled from 'styled-components';
 import Modal from 'styled-react-modal';
 
 export const Container = styled.div`
-	height: 100vh;
+	//height: 100vh;
 	display: grid;
-	grid-template-rows: 10fr 45fr 45fr;
-	grid-template-columns: repeat(2, 50fr); //50fr means 50% of available space
-	grid-template-areas:
-		'title title'
-		'image list';
-	border: 3px solid lightgrey;
-
+	grid-template-rows: auto auto;
+	grid-template-columns: 40fr 60fr; //50fr means 50% of available space
+	grid-template-areas: 'title title' 'image list';
+	//border: 3px solid lightgrey;
+	justify-items: center;
+	align-items: center;
 	//justify-items - aligns items inside the grid horizontaly
 	//?default value it's strech and full fill all the content of the cell
 	//align-items - aligns items inside the grid vertically
 
-	column-gap: 10rem;
+	//column-gap: 10rem;
 	justify-content: center; //align the entire grid horizontaly
 	align-content: center; //align the entire grid vertically
 `;
 
 export const Title = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	height: 5rem;
 	grid-area: title; //to place the element on a specific area, this is the same as grid-column:1/ span 2
 `;
 export const Left = styled.div`
-	display: flex;
+	/* display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
+	align-items: center; */
 	grid-area: image;
 
 	img {
-		border: 1px solid grey;
-		height: 100rem;
-		width: 100rem;
+		height: 70rem;
+		width: 70rem;
 	}
 `;
 export const Right = styled.div`
-	align-items: center;
+	/* display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center; */
 	grid-area: list;
+	border: 3px solid lightgrey;
 `;
 
 export const StyledModal = Modal.styled`

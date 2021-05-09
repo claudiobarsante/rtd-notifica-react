@@ -1,4 +1,4 @@
-import { Route, RouteProps, Redirect } from 'react-router-dom';
+import { Route, RouteProps, Redirect, useParams, useLocation } from 'react-router-dom';
 import React from 'react';
 import { useAuth } from 'hooks/use-auth';
 import Navbar from 'components/Navbar';
@@ -10,6 +10,7 @@ const ProtectedRoute = ({ isProtected = false, component: Component, ...rest }: 
 	const { currentUser } = useAuth();
 	const isAuthenticated = currentUser.isAuthenticated;
 	console.log('current ', currentUser.isAuthenticated);
+	const location = useLocation();
 
 	return (
 		<Route
@@ -22,7 +23,7 @@ const ProtectedRoute = ({ isProtected = false, component: Component, ...rest }: 
 				) {
 					return (
 						<>
-							<Navbar />
+							<Navbar currentPage={location.pathname} />
 							<Component />
 						</>
 					);
