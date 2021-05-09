@@ -6,6 +6,7 @@ export const Container = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	background: #aacaff;
 
 	height: 100vh;
 	p {
@@ -22,12 +23,13 @@ export const SignIn = styled.div`
 	height: 50rem;
 	border-radius: 1rem;
 	background: white;
+	overflow: hidden;
 	//?shadow
-	box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
 	transition: 0.3s;
 
 	&:hover {
-		box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+		box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.3);
 	}
 
 	@media (max-width: 768px) {
@@ -70,10 +72,13 @@ export const Form = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background: url(${backgroundImg}) no-repeat;
-	background-size: contain;
-	background-position: center;
+	//background: url(${backgroundImg}) no-repeat;
+	//background-size: contain;
+	//background-position: center;
 	//border: 1px solid green;
+	//	border-radius: 1rem;
+	//background: #aacaff;
+
 	width: 50%;
 	height: inherit;
 	p {
