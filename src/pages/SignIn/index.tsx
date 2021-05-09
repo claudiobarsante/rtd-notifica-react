@@ -51,7 +51,8 @@ const SignIn = () => {
 					</div>
 				</S.Art>
 				<S.Form>
-					<h1>Login</h1>
+					<h1>RTDNOTIFICA</h1>
+					<h2>Login</h2>
 					<form onSubmit={handleSubmit(submitForm)}>
 						<Input
 							id='email'

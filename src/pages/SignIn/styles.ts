@@ -1,47 +1,17 @@
 import styled from 'styled-components';
-import backgroundImg from '../../assets/Background.png';
+import backgroundImg from '../../assets/FundoLogin.png';
 
 export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	//align-items: center;
-	//margin-top: -16rem;
-	/* flex-direction: column;
-	align-items: center;
-	justify-content: center; */
-	/* background: url(${backgroundImg}) no-repeat;
-	background-size: contain;
-	background-position: center; */
+
 	height: 100vh;
 	p {
 		color: var(--error);
 		font-size: 1.2rem;
 	}
-	//margin-top: 10rem;
-	/* width: 120rem;
-	height: 50rem;
-	border: 1px solid red;
-	background: white;
-
-	img {
-		//	position: absolute;
-		//top: -1.5rem;
-		padding-top: 0;
-		height: 40rem;
-	}
-
-	p {
-		color: var(--error);
-	} */
-
-	/* > div {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	} */
 `;
 
 export const SignIn = styled.div`
@@ -86,12 +56,12 @@ export const Art = styled.div`
 		width: 100%;
 
 		border-radius: 1rem;
-		background: #0099ff;
+		//background: #aacaff;
 	}
 	img {
 		//border: 1px solid purple;
-		height: 30rem;
-		width: 30rem;
+		max-height: 50rem;
+		max-width: 55rem;
 	}
 `;
 
@@ -100,16 +70,23 @@ export const Form = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	border: 1px solid green;
+	background: url(${backgroundImg}) no-repeat;
+	background-size: contain;
+	background-position: center;
+	//border: 1px solid green;
 	width: 50%;
 	height: inherit;
 	p {
 		color: var(--error);
 	}
 	h1 {
-		font-weight: 300;
+		font-weight: 400;
 		color: var(--gray-dark);
 		margin-bottom: 3rem;
+	}
+	h2 {
+		font-weight: 400;
+		color: var(--gray-dark);
 	}
 `;
 export const ActivityIndicatorContainer = styled.div`
