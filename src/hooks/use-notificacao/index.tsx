@@ -8,8 +8,8 @@ export type Notificacao = {
 	bairro: string;
 	diasEmAtraso: number;
 	endereco: string;
-	latitute: string;
-	longitude: string;
+	latitute?: string;
+	longitude?: string;
 	logradouro: string;
 	nome: string;
 	notificadoId: number;

@@ -1,11 +1,11 @@
 export class CurrentUser {
-	nickname: string;
-	institucionalId: number;
-	oficioId: number;
-	userId: string;
-	userName: string;
-	expirationDate?: Date;
-	isAuthenticated: boolean;
+	readonly nickname: string;
+	readonly institucionalId: number;
+	readonly oficioId: number;
+	readonly userId: string;
+	readonly userName: string;
+	readonly expirationDate?: Date;
+	readonly isAuthenticated: boolean;
 	constructor(
 		nickname: string,
 		institucionalId: number,
