@@ -48,6 +48,7 @@ const Overview = () => {
 				<img src={multiImg} alt='Figura simulando um homem fazendo  várias coisas' />
 			</S.Left>
 			<S.Right>
+				{isLoading && <ActivityIndicator isLoading={isLoading} />}
 				{page &&
 					page.map(notificacao => (
 						<NotificacaoItem key={notificacao.notificadoId} notificacaoDetails={notificacao} />

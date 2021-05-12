@@ -1,8 +1,6 @@
 import { Notificacao } from 'hooks/use-notificacao';
 
 export class Pagination {
-	constructor() {}
-
 	static getTotalNumberOfPages(length: number, recordsPerPage: number) {
 		const countPages = Math.ceil(length / recordsPerPage);
 		return countPages;

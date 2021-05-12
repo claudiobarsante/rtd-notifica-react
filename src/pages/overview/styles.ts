@@ -41,7 +41,8 @@ export const Right = styled.div`
 	justify-content: center;
 	align-items: center; */
 	grid-area: list;
-	border: 3px solid lightgrey;
+	//border: 3px solid lightgrey;
+	max-width: 100%;
 `;
 
 export const StyledModal = Modal.styled`
