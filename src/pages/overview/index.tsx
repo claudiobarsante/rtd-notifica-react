@@ -18,7 +18,7 @@ const Overview = () => {
 	const { currentUser } = useAuth();
 
 	const [totalPages, setTotalPages] = useState<number>(0);
-	const [recordsPerPage] = useState<number>(5);
+	const [recordsPerPage] = useState<number>(4);
 	const [page, setPage] = useState<Notificacao[]>([]);
 	const [currentPage, setCurrentPage] = useState<number>(FIRST_PAGE);
 	const [inputText, setInputText] = useState('');

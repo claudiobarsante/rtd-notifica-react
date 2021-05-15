@@ -18,12 +18,16 @@ html{
   --success: #73bd73;
   --purple:#788EEC;
   --white:#F4EDE8;
-  --gray:#f3f2f2;
-  --gray-hard:#666360;
-  --gray-dark: #42403e;
+  --grey:#f3f2f2;
+  --grey-hard:#666360;
+  --grey-dark: #42403e;
   --background-modal:#f0f2f5;
   --primary:#0099ff;
   --sm:768px;
+  --black-20: "#333333"; //black 20%
+  --black-35: "#595959";
+  --black-40: "#666666";
+  --black-80: "#ccc";
 }
 
 

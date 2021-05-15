@@ -5,7 +5,7 @@ import signInService from './../../services/authService';
 import { toast, Slide } from 'react-toastify';
 import axios from 'axios';
 //Utils
-import { format } from 'utils/formatErrorMessage';
+
 import apiClient from 'api/client';
 import { Error } from 'erros/Error';
 

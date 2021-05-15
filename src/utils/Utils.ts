@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
-//import utc from "dayjs-plugin-utc";
+//import utc from 'dayjs-plugin-utc';
 import _ from 'lodash';
 
 export class Utils {
@@ -61,8 +61,8 @@ export class Utils {
 		return splitStr.join(' ');
 	}
 
-	//   static todayPtBr() {
-	//     dayjs.extend(utc);
-	//     return dayjs.utc(new Date()).locale("pt-br").format("DD/MM/YYYY");
-	//   }
+	// static todayPtBr() {
+	// 	dayjs.extend(utc);
+	// 	return dayjs.utc(new Date()).locale('pt-br').format('DD/MM/YYYY');
+	// }
 }

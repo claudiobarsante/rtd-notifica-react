@@ -2,6 +2,7 @@ import { AiOutlineFileText } from 'react-icons/ai';
 import { FiMoreVertical } from 'react-icons/fi';
 import * as S from './styles';
 import { Notificacao } from 'hooks/use-notificacao';
+import { Utils } from 'utils/Utils';
 
 type Props = {
 	notificacaoDetails: Notificacao;
@@ -10,8 +11,12 @@ type Props = {
 const NotificacaoItem = ({ notificacaoDetails }: Props) => {
 	return (
 		<S.NotificacaoContainer key={notificacaoDetails.notificadoId}>
-			<p>{notificacaoDetails.protocolo}</p>
-			<span>{notificacaoDetails.nome}</span>
+			<S.Body>
+				<S.NotIcon />
+				<S.Protocolo>{`Protocolo : ${notificacaoDetails.protocolo}`}</S.Protocolo>
+				<S.Nome>{Utils.titleCase(notificacaoDetails.nome)}</S.Nome>
+				<S.Endereco>{Utils.titleCase(notificacaoDetails.endereco)}</S.Endereco>
+			</S.Body>
 		</S.NotificacaoContainer>
 	);
 };

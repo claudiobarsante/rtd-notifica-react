@@ -1,9 +1,8 @@
 import { getAllNotificacoesService } from 'services/notificacaoService';
 import { createContext, useCallback, useContext, useState } from 'react';
 //Utils
-import { format } from 'utils/formatErrorMessage';
 import { ResponseError } from 'types/response';
-import Error from 'erros/Error';
+import { Error } from 'erros/Error';
 
 export type Notificacao = {
 	bairro: string;

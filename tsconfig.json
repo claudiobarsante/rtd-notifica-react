@@ -22,7 +22,8 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  
   "include": [
-    "src","**/*.ts"
+    "src","**/*.ts","node_modules/dayjs/plugin/utc.d.ts"
   ]
 }
