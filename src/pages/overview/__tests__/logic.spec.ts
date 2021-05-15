@@ -1,6 +1,6 @@
 import { Notificacao } from 'hooks/use-notificacao';
 import { Pagination } from '../logic';
-import { data } from '../../../utils/data';
+import { data } from '../../../utils/mock/data';
 
 describe('Testing Pagination class methods', () => {
 	it('should be able to return the right number of total pages to show all records', () => {
