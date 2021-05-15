@@ -19,7 +19,7 @@ export type Notificacao = {
 };
 
 export type NotificacoesState = {
-	all: Notificacao[];
+	todasNotificacoes: Notificacao[];
 	error: ResponseError;
 	//filteredNotificacoes: Notificacao[];
 	isLoading: boolean;
@@ -27,7 +27,7 @@ export type NotificacoesState = {
 };
 
 const INITIAL_STATE: NotificacoesState = {
-	all: [],
+	todasNotificacoes: [],
 	//filteredNotificacoes: [],
 	error: { code: 0, message: '' },
 	isLoading: false,
@@ -35,9 +35,9 @@ const INITIAL_STATE: NotificacoesState = {
 };
 
 export type NotificacoesContextData = {
-	all: Notificacao[];
+	todasNotificacoes: Notificacao[];
 	isLoading: boolean;
-	getAllByOficioId: (oficioId: number) => void;
+	getTodasNotificacoesByOficioId: (oficioId: number) => void;
 };
 
 export const NotificacoesContext = createContext<NotificacoesContextData>(
@@ -51,12 +51,12 @@ export type NotificacoesProviderProps = {
 const NotificacoesProvider = ({ children }: NotificacoesProviderProps) => {
 	const [data, setData] = useState<NotificacoesState>(INITIAL_STATE);
 
-	const getAllByOficioId = useCallback(async (oficioId: number) => {
+	const getTodasNotificacoesByOficioId = useCallback(async (oficioId: number) => {
 		try {
 			setData(data => ({ ...data, isLoading: true }));
 			const response = await getAllNotificacoesService(oficioId);
 			const notificacoes: Notificacao[] = JSON.parse(response.data);
-			setData(data => ({ ...data, all: notificacoes }));
+			setData(data => ({ ...data, todasNotificacoes: notificacoes }));
 		} catch (error) {
 			const { code, message } = format(error.toString());
 			setData(data => ({ ...data, error: { code, message } }));
@@ -66,7 +66,11 @@ const NotificacoesProvider = ({ children }: NotificacoesProviderProps) => {
 
 	return (
 		<NotificacoesContext.Provider
-			value={{ isLoading: data.isLoading, all: data.all, getAllByOficioId }}
+			value={{
+				isLoading: data.isLoading,
+				todasNotificacoes: data.todasNotificacoes,
+				getTodasNotificacoesByOficioId,
+			}}
 		>
 			{children}
 		</NotificacoesContext.Provider>
