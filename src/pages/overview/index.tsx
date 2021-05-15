@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import ActivityIndicator from 'components/Activity-Indicator';
 import { useAuth } from 'hooks/use-auth';
@@ -6,22 +6,25 @@ import { Notificacao, useNotificacao } from 'hooks/use-notificacao';
 import NotificacaoItem from '../../components/notificacao/Notificacao-Item';
 import * as S from './styles';
 import multiImg from 'assets/multi-transp.png';
-import { Pagination } from './logic';
+import { Pagination, Search } from './logic';
 import PaginationButtons from 'components/Pagination-Buttons';
 import _ from 'lodash';
 
 const FIRST_PAGE = 1;
+
 const Overview = () => {
-	//const [notificacoes, setNotificacoes] = useState<Notificacao[]>({} as Notificacao[]);
+	//
 	const { getTodasNotificacoesByOficioId, isLoading, todasNotificacoes } = useNotificacao();
 	const { currentUser } = useAuth();
+
 	const [totalPages, setTotalPages] = useState<number>(0);
-	const [recordsPerPage, setRecordsPerPage] = useState<number>(5);
+	const [recordsPerPage] = useState<number>(5);
 	const [page, setPage] = useState<Notificacao[]>([]);
 	const [currentPage, setCurrentPage] = useState<number>(FIRST_PAGE);
-	const [filteredNotificacoes, setFilteredNotificacoes] =
-		useState<Notificacao[]>(todasNotificacoes);
 	const [inputText, setInputText] = useState('');
+	const [filteredNotificacoes, setFilteredNotificacoes] = useState<Notificacao[]>(
+		{} as Notificacao[]
+	);
 
 	const loadRecordsToPage = useCallback(
 		(currentPage: number) => {
@@ -34,6 +37,10 @@ const Overview = () => {
 		},
 		[filteredNotificacoes, recordsPerPage]
 	);
+
+	useEffect(() => {
+		setFilteredNotificacoes(todasNotificacoes);
+	}, [todasNotificacoes]);
 
 	useEffect(() => {
 		const countPages = Pagination.getTotalNumberOfPages(
@@ -67,33 +74,14 @@ const Overview = () => {
 		setCurrentPage(newPage);
 	}, [filteredNotificacoes.length, currentPage, loadRecordsToPage]);
 
-	//? Search for
-	const handleSearch = _.debounce(e => {
-		const text = e.target.value;
-		setInputText(text);
-		const formattedQuery = text.toLowerCase();
-
-		const filtered = _.filter(todasNotificacoes, notificacao => {
-			if (
-				notificacao.protocolo.includes(formattedQuery) ||
-				notificacao.nome.toLowerCase().includes(formattedQuery) ||
-				notificacao.endereco.toLowerCase().includes(formattedQuery)
-			) {
-				return true;
-			}
-			return false;
-		});
-
-		setFilteredNotificacoes(filtered);
-	}, 250);
-
-	//////////const handle//////////////////////
+	//todo: add _.debounce
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		console.log('');
 		const text = e.target.value;
-		console.log('text ', text);
 		setInputText(text);
+		const filtered = Search.filterNotificacoes(text, todasNotificacoes);
+		setFilteredNotificacoes(filtered);
 	};
+
 	return (
 		<S.Container>
 			<S.Left>

@@ -1,4 +1,5 @@
 import { Notificacao } from 'hooks/use-notificacao';
+import _ from 'lodash';
 
 export class Pagination {
 	static getTotalNumberOfPages(length: number, recordsPerPage: number) {
@@ -23,5 +24,24 @@ export class Pagination {
 		}
 
 		return records;
+	}
+}
+
+export class Search {
+	static filterNotificacoes(text: string, todasNotificacoes: Notificacao[]): Notificacao[] {
+		const formattedQuery = text.toLowerCase();
+
+		const filtered = _.filter(todasNotificacoes, notificacao => {
+			if (
+				notificacao.protocolo.includes(formattedQuery) ||
+				notificacao.nome.toLowerCase().includes(formattedQuery) ||
+				notificacao.endereco.toLowerCase().includes(formattedQuery)
+			) {
+				return true;
+			}
+			return false;
+		});
+
+		return filtered;
 	}
 }
