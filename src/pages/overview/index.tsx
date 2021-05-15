@@ -7,6 +7,7 @@ import NotificacaoItem from '../../components/notificacao/Notificacao-Item';
 import * as S from './styles';
 import multiImg from 'assets/multi-transp.png';
 import { Pagination } from './logic';
+import PaginationButtons from 'components/Pagination-Buttons';
 
 const FIRST_PAGE = 1;
 const Overview = () => {
@@ -39,11 +40,30 @@ const Overview = () => {
 		if (totalPages) loadRecordsToPage(FIRST_PAGE);
 	}, [loadRecordsToPage, totalPages]);
 
+	const handlePreviousClick = useCallback(
+		(currentPage: number) => {
+			if (currentPage === 1) return;
+
+			const newPage = currentPage - 1;
+			loadRecordsToPage(newPage);
+			setCurrentPage(newPage);
+		},
+		[loadRecordsToPage]
+	);
+
+	const handleNextClick = useCallback(
+		(currentPage: number) => {
+			if (currentPage === all.length) return;
+
+			const newPage = currentPage + 1;
+			loadRecordsToPage(newPage);
+			setCurrentPage(newPage);
+		},
+		[all.length, loadRecordsToPage]
+	);
+
 	return (
 		<S.Container>
-			<S.Title>
-				<h1>Notificações</h1>
-			</S.Title>
 			<S.Left>
 				<img src={multiImg} alt='Figura simulando um homem fazendo  várias coisas' />
 			</S.Left>
@@ -53,18 +73,14 @@ const Overview = () => {
 					page.map(notificacao => (
 						<NotificacaoItem key={notificacao.notificadoId} notificacaoDetails={notificacao} />
 					))}
+
+				<PaginationButtons
+					totalPages={totalPages}
+					onPreviousClick={handlePreviousClick}
+					onNextClick={handleNextClick}
+					currentPage={currentPage}
+				/>
 			</S.Right>
-			{/* <p>Overview</p>
-			{<ActivityIndicator isLoading={isLoading} />}
-			<S.Left>
-				<img src={multiImg} alt='Figura simulando um homem fazendo  várias coisas' />
-			</S.Left>
-			<S.Right>
-				{all &&
-					all.map(notificacao => (
-						<NotificacaoItem key={notificacao.notificadoId} notificacaoDetails={notificacao} />
-					))}
-			</S.Right> */}
 		</S.Container>
 	);
 };

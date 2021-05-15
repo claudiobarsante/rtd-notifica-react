@@ -1,4 +1,4 @@
-import apiClient from '../api/client';
+import apiClient from 'api/client';
 import { Credentials } from 'hooks/use-auth';
 
 const signInService = ({ email, password }: Credentials) =>
@@ -9,7 +9,7 @@ const signInService = ({ email, password }: Credentials) =>
 		data: `username=${email}&password=${password}&grant_type=password`,
 	});
 
-//todo:check if it's a goos way for testing
+//todo:check if it's a good way for testing
 // apiClient.post(
 // 	`${process.env.REACT_APP_TOKEN_ENDPOINT}`,
 // 	`username=${email}&password=${password}&grant_type=password`,
