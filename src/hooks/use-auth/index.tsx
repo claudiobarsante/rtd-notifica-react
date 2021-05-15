@@ -7,6 +7,7 @@ import axios from 'axios';
 //Utils
 import { format } from 'utils/formatErrorMessage';
 import apiClient from 'api/client';
+import { Error } from 'erros/Error';
 
 export type AuthState = {
 	user: CurrentUser;
@@ -88,7 +89,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
 				setData(data => ({ ...data, user: currentUser, token: access_token }));
 			} catch (error) {
-				const { message } = format(error.toString());
+				const { message } = Error.formatErrorMessage(error.toString());
 
 				toast.error(`🙍‍♂️ ${message}`, {
 					transition: Slide,

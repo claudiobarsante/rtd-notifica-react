@@ -3,6 +3,7 @@ import { createContext, useCallback, useContext, useState } from 'react';
 //Utils
 import { format } from 'utils/formatErrorMessage';
 import { ResponseError } from 'types/response';
+import Error from 'erros/Error';
 
 export type Notificacao = {
 	bairro: string;
@@ -58,7 +59,7 @@ const NotificacoesProvider = ({ children }: NotificacoesProviderProps) => {
 			const notificacoes: Notificacao[] = JSON.parse(response.data);
 			setData(data => ({ ...data, todasNotificacoes: notificacoes }));
 		} catch (error) {
-			const { code, message } = format(error.toString());
+			const { code, message } = Error.formatErrorMessage(error.toString());
 			setData(data => ({ ...data, error: { code, message } }));
 		}
 		setData(data => ({ ...data, isLoading: false }));
