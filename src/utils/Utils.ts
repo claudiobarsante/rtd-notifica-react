@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
-//import utc from 'dayjs-plugin-utc';
 import _ from 'lodash';
+import utc from 'types/utc';
 
 export class Utils {
 	static firstLetterUppercase(str: string) {
@@ -25,9 +25,9 @@ export class Utils {
 		}
 	}
 
-	//   static formatDateToPtBr(day) {
-	//     return dayjs(day.dateString).locale("pt-br").format("DD/MM/YYYY");
-	//   }
+	static formatDateToPtBr(day: { dateString: dayjs.ConfigType | undefined }) {
+		return dayjs(day.dateString).locale('pt-br').format('DD/MM/YYYY');
+	}
 
 	static formatThousands(value: number) {
 		const str = value.toString();
@@ -61,8 +61,8 @@ export class Utils {
 		return splitStr.join(' ');
 	}
 
-	// static todayPtBr() {
-	// 	dayjs.extend(utc);
-	// 	return dayjs.utc(new Date()).locale('pt-br').format('DD/MM/YYYY');
-	// }
+	static todayPtBr() {
+		dayjs.extend(utc);
+		return dayjs.utc(new Date()).locale('pt-br').format('DD/MM/YYYY');
+	}
 }

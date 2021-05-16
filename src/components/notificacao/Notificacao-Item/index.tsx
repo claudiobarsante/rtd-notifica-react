@@ -16,6 +16,7 @@ const NotificacaoItem = ({ notificacaoDetails }: Props) => {
 				<S.Protocolo>{`Protocolo : ${notificacaoDetails.protocolo}`}</S.Protocolo>
 				<S.Nome>{Utils.titleCase(notificacaoDetails.nome)}</S.Nome>
 				<S.Endereco>{Utils.titleCase(notificacaoDetails.endereco)}</S.Endereco>
+				<span>{`dias em atraso ${Utils.}`}</span>
 			</S.Body>
 		</S.NotificacaoContainer>
 	);

@@ -4,7 +4,7 @@ import Modal from 'styled-react-modal';
 export const Container = styled.div`
 	//height: 100vh;
 	display: grid;
-	grid-template-rows: auto auto;
+	grid-template-rows: 8fr 92fr;
 	grid-template-columns: 40fr 60fr; //50fr means 50% of available space
 	grid-template-areas: 'topLeft topRight' 'image list';
 	//border: 3px solid lightgrey;

@@ -24,6 +24,6 @@
   },
   
   "include": [
-    "src","**/*.ts","node_modules/dayjs/plugin/utc.d.ts"
+    "src","**/*.ts","src/types/utc.d.ts"
   ]
 }
