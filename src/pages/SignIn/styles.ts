@@ -86,12 +86,12 @@ export const Form = styled.div`
 	}
 	h1 {
 		font-weight: 400;
-		color: var(--gray-dark);
+		color: var(--grey-dark);
 		margin-bottom: 3rem;
 	}
 	h2 {
 		font-weight: 400;
-		color: var(--gray-dark);
+		color: var(--grey-dark);
 	}
 `;
 export const ActivityIndicatorContainer = styled.div`

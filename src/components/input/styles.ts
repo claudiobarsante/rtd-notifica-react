@@ -8,11 +8,11 @@ type ContainerProps = {
 export const Container = styled.div<ContainerProps>`
 	width: 100%;
 	height: 5.6rem;
-	background: var(--gray);
+	background: var(--grey);
 	border-radius: 1rem;
-	border: 2px solid var(--gray);
+	border: 2px solid var(--grey);
 	padding: 16px;
-	color: var(--gray-hard);
+	color: var(--grey-hard);
 
 	display: flex;
 	align-items: center;
