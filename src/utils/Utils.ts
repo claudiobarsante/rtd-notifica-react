@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
-import _ from 'lodash';
+import reverse from 'lodash/reverse';
 import utc from 'types/utc';
 
 export class Utils {
@@ -18,7 +18,7 @@ export class Utils {
 	static formatDateApi(date: string) {
 		try {
 			const splitedDate = date.split('/', 3);
-			const reversedArray = _.reverse(splitedDate);
+			const reversedArray = reverse(splitedDate);
 			return reversedArray.toString().replace(/,/g, '-');
 		} catch {
 			return date;

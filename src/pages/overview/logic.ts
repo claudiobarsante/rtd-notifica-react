@@ -1,5 +1,5 @@
 import { Notificacao } from 'hooks/use-notificacao';
-import _ from 'lodash';
+import filter from 'lodash/filter';
 
 export class Pagination {
 	static getTotalNumberOfPages(length: number, recordsPerPage: number) {
@@ -31,7 +31,7 @@ export class Search {
 	static filterNotificacoes(text: string, todasNotificacoes: Notificacao[]): Notificacao[] {
 		const formattedQuery = text.toLowerCase();
 
-		const filtered = _.filter(todasNotificacoes, notificacao => {
+		const filtered = filter(todasNotificacoes, notificacao => {
 			if (
 				notificacao.protocolo.includes(formattedQuery) ||
 				notificacao.nome.toLowerCase().includes(formattedQuery) ||

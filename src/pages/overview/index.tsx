@@ -8,7 +8,6 @@ import * as S from './styles';
 import multiImg from 'assets/multi-transp.png';
 import { Pagination, Search } from './logic';
 import PaginationButtons from 'components/Pagination-Buttons';
-import _ from 'lodash';
 
 const FIRST_PAGE = 1;
 
