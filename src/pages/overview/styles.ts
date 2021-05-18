@@ -4,12 +4,12 @@ import Modal from 'styled-react-modal';
 export const Container = styled.div`
 	//height: 100vh;
 	display: grid;
-	grid-template-rows: 8fr 92fr;
-	grid-template-columns: 40fr 60fr; //50fr means 50% of available space
+	grid-template-rows: 10fr 90fr;
+	grid-template-columns: 50fr 50fr; //50fr means 50% of available space
 	grid-template-areas: 'topLeft topRight' 'image list';
 	//border: 3px solid lightgrey;
-	justify-items: center;
-	align-items: center;
+	//justify-items: center;
+	//align-items: center;
 	//justify-items - aligns items inside the grid horizontaly
 	//?default value it's strech and full fill all the content of the cell
 	//align-items - aligns items inside the grid vertically
@@ -24,27 +24,38 @@ export const Container = styled.div`
 // 	grid-area: title; //to place the element on a specific area, this is the same as grid-column:1/ span 2
 // `;
 export const Left = styled.div`
-	/* display: flex;
+	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center; */
+	align-items: center;
 	grid-area: image;
 
 	img {
-		height: 70rem;
-		width: 70rem;
+		height: 75rem;
+		width: 80rem;
 	}
+	border: 1px solid green;
 `;
 export const Right = styled.div`
-	/* display: flex;
+	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center; */
+	align-items: center;
 	grid-area: list;
-	//border: 3px solid lightgrey;
-	max-width: 100%;
+	border: 3px solid lightgrey;
+	width: 100%;
+	padding-top: 3rem;
 `;
-
+export const TopRight = styled.div`
+	grid-area: topRight;
+	border: 3px solid red;
+	padding: 1rem;
+	/* 
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start; */
+`;
 export const StyledModal = Modal.styled`
 display: flex;
 justify-content: center;

@@ -1,13 +1,18 @@
 import React, { useCallback, useEffect, useState } from 'react';
-
+//Components
 import ActivityIndicator from 'components/Activity-Indicator';
+import NotificacaoItem from 'components/notificacao/Notificacao-Item';
+import PaginationButtons from 'components/Pagination-Buttons';
+import NotificacaoSearch from 'components/Search';
+//Hooks
 import { useAuth } from 'hooks/use-auth';
 import { Notificacao, useNotificacao } from 'hooks/use-notificacao';
-import NotificacaoItem from '../../components/notificacao/Notificacao-Item';
+//Styles
 import * as S from './styles';
+//Images
 import multiImg from 'assets/multi-transp.png';
+//Logic
 import { Pagination, Search } from './logic';
-import PaginationButtons from 'components/Pagination-Buttons';
 
 const FIRST_PAGE = 1;
 
@@ -86,13 +91,10 @@ const Overview = () => {
 			<S.Left>
 				<img src={multiImg} alt='Figura simulando um homem fazendo  várias coisas' />
 			</S.Left>
+			<S.TopRight>
+				<NotificacaoSearch text={inputText} onHandleChange={handleChange} />
+			</S.TopRight>
 			<S.Right>
-				<input
-					type='text'
-					placeholder='Pesquise aqui..'
-					onChange={handleChange}
-					value={inputText}
-				/>
 				{isLoading && <ActivityIndicator isLoading={isLoading} />}
 				{page &&
 					page.map(notificacao => (

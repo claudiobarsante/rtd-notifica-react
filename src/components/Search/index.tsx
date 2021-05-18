@@ -1,5 +1,17 @@
-const Search = () => {
-	return <h1>Something,/h1</h1>;
+import * as S from './styles';
+import { AiOutlineFileSearch } from 'react-icons/ai';
+type Props = {
+	text: string;
+	onHandleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export default Search;
+const NotificacaoSearch = ({ text, onHandleChange }: Props) => {
+	return (
+		<S.Container>
+			<S.SearchIcon />
+			<input type='text' placeholder='Pesquise aqui..' onChange={onHandleChange} value={text} />
+		</S.Container>
+	);
+};
+
+export default NotificacaoSearch;

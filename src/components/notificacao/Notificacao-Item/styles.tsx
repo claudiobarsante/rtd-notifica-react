@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { AiOutlineFileText } from 'react-icons/ai';
 
 export const NotificacaoContainer = styled.div`
@@ -15,6 +15,7 @@ export const NotificacaoContainer = styled.div`
 		box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
 	}
 	position: relative;
+	//border: 1px solid red;
 `;
 
 export const NotIcon = styled(AiOutlineFileText)`

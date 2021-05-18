@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
 import reverse from 'lodash/reverse';
-import utc from 'types/utc';
+//import utc from 'types/utc';
 
 export class Utils {
 	static firstLetterUppercase(str: string) {
@@ -61,8 +61,8 @@ export class Utils {
 		return splitStr.join(' ');
 	}
 
-	static todayPtBr() {
-		dayjs.extend(utc);
-		return dayjs.utc(new Date()).locale('pt-br').format('DD/MM/YYYY');
-	}
+	// static todayPtBr() {
+	// 	dayjs.extend(utc);
+	// 	return dayjs.utc(new Date()).locale('pt-br').format('DD/MM/YYYY');
+	// }
 }
