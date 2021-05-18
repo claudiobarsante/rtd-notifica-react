@@ -1,5 +1,4 @@
 import * as S from './styles';
-import { AiOutlineFileSearch } from 'react-icons/ai';
 type Props = {
 	text: string;
 	onHandleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

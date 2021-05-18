@@ -50,11 +50,8 @@ export const TopRight = styled.div`
 	grid-area: topRight;
 	border: 3px solid red;
 	padding: 1rem;
-	/* 
+
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start; */
 `;
 export const StyledModal = Modal.styled`
 display: flex;

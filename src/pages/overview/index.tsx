@@ -3,7 +3,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 import ActivityIndicator from 'components/Activity-Indicator';
 import NotificacaoItem from 'components/notificacao/Notificacao-Item';
 import PaginationButtons from 'components/Pagination-Buttons';
-import NotificacaoSearch from 'components/Search';
+import NotificacaoSearch from 'components/notificacao/Search';
+import ClearButton from 'components/notificacao/Clear-Button';
 //Hooks
 import { useAuth } from 'hooks/use-auth';
 import { Notificacao, useNotificacao } from 'hooks/use-notificacao';
@@ -86,6 +87,8 @@ const Overview = () => {
 		setFilteredNotificacoes(filtered);
 	};
 
+	const handleClear = () => setInputText('');
+
 	return (
 		<S.Container>
 			<S.Left>
@@ -93,6 +96,7 @@ const Overview = () => {
 			</S.Left>
 			<S.TopRight>
 				<NotificacaoSearch text={inputText} onHandleChange={handleChange} />
+				<ClearButton onClick={handleClear} />
 			</S.TopRight>
 			<S.Right>
 				{isLoading && <ActivityIndicator isLoading={isLoading} />}
