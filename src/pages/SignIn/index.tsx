@@ -62,6 +62,7 @@ const SignIn = () => {
 							inputRef={register}
 							error={errors.email?.message}
 							icon={AiOutlineUser}
+							maxLength={50}
 						/>
 						<ErrorMessage
 							name='email'
@@ -77,6 +78,7 @@ const SignIn = () => {
 							inputRef={register}
 							error={errors.password?.message}
 							icon={AiOutlineLock}
+							maxLength={20}
 						/>
 						<ErrorMessage
 							name='password'
