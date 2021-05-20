@@ -1,6 +1,6 @@
 import * as S from './styles';
 import { Notificacao } from 'hooks/use-notificacao';
-import { Utils } from 'utils/Utils';
+import { Utils } from 'helpers/Utils';
 
 type Props = {
 	notificacaoDetails: Notificacao;
