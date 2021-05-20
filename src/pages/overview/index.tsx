@@ -18,18 +18,26 @@ import { Pagination, Search } from './logic';
 const FIRST_PAGE = 1;
 
 const Overview = () => {
-	//
-	const { getTodasNotificacoesByOficioId, isLoading, todasNotificacoes } = useNotificacao();
-	const { currentUser } = useAuth();
-
+	//state
+	const [currentPage, setCurrentPage] = useState<number>(FIRST_PAGE);
 	const [totalPages, setTotalPages] = useState<number>(0);
 	const [recordsPerPage] = useState<number>(4);
 	const [page, setPage] = useState<Notificacao[]>([]);
-	const [currentPage, setCurrentPage] = useState<number>(FIRST_PAGE);
 	const [inputText, setInputText] = useState('');
 	const [filteredNotificacoes, setFilteredNotificacoes] = useState<Notificacao[]>(
 		{} as Notificacao[]
 	);
+	//hooks
+	const { getTodasNotificacoesByOficioId, isLoading, todasNotificacoes } = useNotificacao();
+	const { currentUser } = useAuth();
+
+	useEffect(() => {
+		getTodasNotificacoesByOficioId(currentUser.oficioId);
+	}, [currentUser.oficioId, getTodasNotificacoesByOficioId]);
+
+	useEffect(() => {
+		setFilteredNotificacoes(todasNotificacoes);
+	}, [todasNotificacoes]);
 
 	const loadRecordsToPage = useCallback(
 		(currentPage: number) => {
@@ -44,20 +52,12 @@ const Overview = () => {
 	);
 
 	useEffect(() => {
-		setFilteredNotificacoes(todasNotificacoes);
-	}, [todasNotificacoes]);
-
-	useEffect(() => {
 		const countPages = Pagination.getTotalNumberOfPages(
 			filteredNotificacoes.length,
 			recordsPerPage
 		);
 		setTotalPages(countPages);
 	}, [filteredNotificacoes.length, recordsPerPage]);
-
-	useEffect(() => {
-		getTodasNotificacoesByOficioId(currentUser.oficioId);
-	}, [currentUser.oficioId, getTodasNotificacoesByOficioId]);
 
 	useEffect(() => {
 		if (totalPages) loadRecordsToPage(FIRST_PAGE);
