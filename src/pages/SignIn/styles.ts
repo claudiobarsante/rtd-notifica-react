@@ -1,14 +1,16 @@
 import styled from 'styled-components';
-import backgroundImg from '../../assets/FundoLogin.png';
+import backgroundImg from 'assets/FundoLogin.png';
 
 export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+
 	background: #aacaff;
 
 	height: 100vh;
+
 	p {
 		color: var(--error);
 		font-size: 1.2rem;
@@ -19,10 +21,12 @@ export const SignIn = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100rem;
+
 	height: 50rem;
-	border-radius: 1rem;
+	width: 100rem;
+
 	background: white;
+	border-radius: 1rem;
 	overflow: hidden;
 	//?shadow
 	box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
@@ -32,7 +36,7 @@ export const SignIn = styled.div`
 		box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.3);
 	}
 
-	@media (max-width: 768px) {
+	@media screen and (max-width: 768px) {
 		flex-direction: column;
 		width: 100vw;
 		height: 100vh;
@@ -44,8 +48,9 @@ export const Art = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 50%;
+
 	height: inherit;
+	width: 50%;
 
 	padding: 1.5rem;
 
@@ -54,6 +59,7 @@ export const Art = styled.div`
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+
 		height: 100%;
 		width: 100%;
 
@@ -62,8 +68,8 @@ export const Art = styled.div`
 	}
 	img {
 		//border: 1px solid purple;
-		max-height: 50rem;
-		max-width: 55rem;
+		height: 50rem;
+		width: 55rem;
 	}
 `;
 
@@ -79,19 +85,22 @@ export const Form = styled.div`
 	//	border-radius: 1rem;
 	//background: #aacaff;
 
-	width: 50%;
 	height: inherit;
+	width: 50%;
+
 	p {
 		color: var(--error);
 	}
+
 	h1 {
-		font-weight: 400;
 		color: var(--grey-dark);
+		font-weight: 400;
 		margin-bottom: 3rem;
 	}
+
 	h2 {
-		font-weight: 400;
 		color: var(--grey-dark);
+		font-weight: 400;
 	}
 `;
 export const ActivityIndicatorContainer = styled.div`

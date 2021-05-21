@@ -28,6 +28,7 @@ export const Left = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+
 	grid-area: image;
 
 	img {
@@ -41,17 +42,19 @@ export const Right = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	grid-area: list;
+
 	border: 3px solid lightgrey;
-	width: 100%;
+
+	grid-area: list;
 	padding-top: 3rem;
+	width: 100%;
 `;
 export const TopRight = styled.div`
+	display: flex;
 	grid-area: topRight;
+
 	border: 3px solid red;
 	padding: 1rem;
-
-	display: flex;
 `;
 export const StyledModal = Modal.styled`
 display: flex;

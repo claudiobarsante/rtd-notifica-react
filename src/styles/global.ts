@@ -1,17 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
-*,*::after,*::before {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    font-size:62.5%;
-    min-height:100%;
-}
-
 :root {
   --error:#c53030;
   --lightBlue:#007aff;
@@ -27,9 +16,20 @@ html{
   --black-20: "#333333"; //black 20%
   --black-35: "#595959";
   --black-40: "#666666";
-  --black-80: "#ccc";
- 
+  --black-80: "#ccc"; 
 }
+
+*,*::after,*::before {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    font-size:62.5%;
+    min-height:100%;
+}
+
 
 
 body{
@@ -38,7 +38,7 @@ body{
 }
 
 body, input, button{
-  font-family: 'Poppins', serif;
+  font-family: 'Inter',serif;
   font-size:1.6rem;
 
 }

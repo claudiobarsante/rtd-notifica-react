@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.button`
-	height: 5.6rem;
-	width: 5.6rem;
 	background: var(--purple);
 	border-radius: 1rem;
-	margin-left: 2rem;
-	//outline: 0;
 	border: 0;
+	margin-left: 2rem;
+
+	height: 5.6rem;
+	width: 5.6rem;
 
 	transition: filter 0.2s;
 

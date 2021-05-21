@@ -1,12 +1,11 @@
 import { CurrentUser } from 'models/User';
 import { createContext, useContext, useState, useCallback } from 'react';
 import { ResponseError } from 'types/response';
-import signInService from './../../services/authService';
+import signInService from 'services/authService';
 import { toast, Slide } from 'react-toastify';
-import axios from 'axios';
+
 //Utils
 
-import apiClient from 'api/client';
 import { Error } from 'erros/Error';
 
 export type AuthState = {
@@ -30,6 +29,7 @@ export type AuthContextData = {
 	currentUser: CurrentUser;
 	isLoading: boolean;
 	tryToSignIn: (credentials: Credentials) => void;
+	getUserFromLocalStorage: () => void;
 };
 
 export const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -60,52 +60,76 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 	//
 	const [data, setData] = useState<AuthState>(INITIAL_STATE);
 
-	const tryToSignIn = useCallback(
-		async ({ email, password }) => {
-			//
-			try {
-				setData(data => ({ ...data, isLoading: true }));
+	const tryToSignIn = useCallback(async ({ email, password }) => {
+		//
+		try {
+			setData(data => ({ ...data, isLoading: true }));
 
-				const response = await signInService({ email, password });
+			const response = await signInService({ email, password });
 
-				const { access_token, claims, expires_in, userName } = response.data;
-				const userClaims = JSON.parse(claims);
-				const expirationDate = new Date(
-					new Date().getTime() + parseInt(expires_in) * 1000 //? *1000 to convert in miliseconds
-				);
+			const { access_token, claims, expires_in, userName } = response.data;
+			const userClaims = JSON.parse(claims);
+			const expirationDate = new Date(
+				new Date().getTime() + parseInt(expires_in) * 1000 //? *1000 to convert in miliseconds
+			);
 
-				const currentUser = new CurrentUser(
-					userClaims[0].value,
-					Number(userClaims[1].value),
-					Number(userClaims[2].value),
-					userClaims[3].value,
-					userName,
-					true,
-					expirationDate
-				);
+			const currentUser = new CurrentUser(
+				userClaims[0].value,
+				Number(userClaims[1].value),
+				Number(userClaims[2].value),
+				userClaims[3].value,
+				userName,
+				true,
+				expirationDate
+			);
 
-				localStorage.setItem(TOKEN_KEY, access_token);
-				localStorage.setItem(USER_KEY, JSON.stringify(currentUser));
+			localStorage.setItem(TOKEN_KEY, access_token);
+			localStorage.setItem(USER_KEY, JSON.stringify(currentUser));
 
-				setData(data => ({ ...data, user: currentUser, token: access_token }));
-			} catch (error) {
-				const { message } = Error.formatErrorMessage(error.toString());
+			setData(data => ({ ...data, user: currentUser, token: access_token }));
+		} catch (error) {
+			const { message } = Error.formatErrorMessage(error.toString());
 
-				toast.error(`🙍‍♂️ ${message}`, {
-					transition: Slide,
-					position: 'top-right',
-					autoClose: 5000,
-					hideProgressBar: false,
-					closeOnClick: true,
-					pauseOnHover: true,
-					draggable: true,
-				});
-			}
-			setData(data => ({ ...data, isLoading: false }));
-		},
+			toast.error(`🙍‍♂️ ${message}`, {
+				autoClose: 5000,
+				closeOnClick: true,
+				draggable: true,
+				hideProgressBar: false,
+				pauseOnHover: true,
+				position: 'top-right',
+				transition: Slide,
+			});
+		}
+		setData(data => ({ ...data, isLoading: false }));
+	}, []);
 
-		[]
-	);
+	const getUserFromLocalStorage = useCallback(() => {
+		//to avoid typescript error
+		const tempToken = localStorage.getItem(TOKEN_KEY);
+		const token = tempToken ?? '';
+		const tempUser = localStorage.getItem(USER_KEY);
+		const {
+			nickname,
+			institucionalId,
+			oficioId,
+			userId,
+			userName,
+			isAuthenticated,
+			expirationDate,
+		}: CurrentUser = tempUser ? JSON.parse(tempUser) : {};
+
+		const currentUser = new CurrentUser(
+			nickname,
+			institucionalId,
+			oficioId,
+			userId,
+			userName,
+			isAuthenticated,
+			expirationDate
+		);
+
+		setData(data => ({ ...data, user: currentUser, token }));
+	}, []);
 
 	return (
 		<AuthContext.Provider
@@ -113,6 +137,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 				currentUser: data.user,
 				isLoading: data.isLoading,
 				tryToSignIn,
+				getUserFromLocalStorage,
 			}}
 		>
 			{children}

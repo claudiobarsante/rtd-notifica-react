@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -11,7 +12,6 @@ import * as S from './styles';
 import Button from 'components/Button';
 import Input from 'components/Input';
 
-import rtdNotificaImg from 'assets/rtd-notifica-blue.png';
 import splashImg from 'assets/splash.png';
 import { useAuth } from 'hooks/use-auth';
 
@@ -32,11 +32,15 @@ const SignIn = () => {
 		mode: 'onBlur',
 	});
 
-	const { tryToSignIn, currentUser, isLoading } = useAuth();
+	const { tryToSignIn, currentUser, isLoading, getUserFromLocalStorage } = useAuth();
 
 	const submitForm = async ({ email, password }: Credentials) => {
 		tryToSignIn({ email: 'user@demo.com.br', password: 'Demo@2020' });
 	};
+
+	useEffect(() => {
+		getUserFromLocalStorage();
+	}, [getUserFromLocalStorage]);
 
 	if (currentUser?.isAuthenticated) {
 		return <Redirect to='/overview' />;
