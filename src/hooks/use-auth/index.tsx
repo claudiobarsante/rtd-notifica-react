@@ -104,7 +104,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 	}, []);
 
 	const getUserFromLocalStorage = useCallback(() => {
-		//to avoid typescript error
+		//to avoid typescript error I have to first storage on a temp variable then parse it
 		const tempToken = localStorage.getItem(TOKEN_KEY);
 		const token = tempToken ?? '';
 		const tempUser = localStorage.getItem(USER_KEY);

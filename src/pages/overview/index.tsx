@@ -14,6 +14,7 @@ import * as S from './styles';
 import multiImg from 'assets/multi-transp.png';
 //Logic
 import { Pagination, Search } from './logic';
+import FilterButton from 'components/notificacao/Filter-Button';
 
 const FIRST_PAGE = 1;
 
@@ -87,7 +88,10 @@ const Overview = () => {
 		setFilteredNotificacoes(filtered);
 	};
 
-	const handleClear = () => setInputText('');
+	const handleClear = useCallback(() => {
+		setInputText('');
+		setFilteredNotificacoes(todasNotificacoes);
+	}, [todasNotificacoes]);
 
 	return (
 		<S.Container>
@@ -97,6 +101,7 @@ const Overview = () => {
 			<S.TopRight>
 				<NotificacaoSearch text={inputText} onHandleChange={handleChange} />
 				<ClearButton onClick={handleClear} />
+				<FilterButton />
 			</S.TopRight>
 			<S.Right>
 				{isLoading && <ActivityIndicator isLoading={isLoading} />}

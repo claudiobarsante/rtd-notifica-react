@@ -1,4 +1,5 @@
 import { IoClose } from 'react-icons/io5';
+import ReactTooltip from 'react-tooltip';
 import * as S from './styles';
 
 type Props = {
@@ -6,9 +7,14 @@ type Props = {
 };
 const ClearButton = ({ onClick }: Props) => {
 	return (
-		<S.Container onClick={onClick}>
-			<IoClose />
-		</S.Container>
+		<>
+			<S.Container onClick={onClick} data-tip data-for='ClearButton'>
+				<IoClose />
+			</S.Container>
+			<ReactTooltip id='ClearButton' place='top' effect='float' type='success'>
+				Limpa sua pesquisa
+			</ReactTooltip>
+		</>
 	);
 };
 
