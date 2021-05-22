@@ -2,8 +2,12 @@ import { FiFilter } from 'react-icons/fi';
 import FilterCard from '../Filter-Card';
 import * as S from './styles';
 import { useState } from 'react';
+import React from 'react';
 
-const FilterButton = () => {
+type Props = {
+	onFilter: (filter: 'all' | 'before' | 'after') => void;
+};
+const FilterButton = ({ onFilter }: Props) => {
 	const [isCardVisible, setIsCardVisible] = useState(false);
 
 	const handleHideCard = () => {
@@ -15,9 +19,13 @@ const FilterButton = () => {
 			<S.Container onClick={() => setIsCardVisible(true)}>
 				<FiFilter />
 			</S.Container>
-			<FilterCard isVisible={isCardVisible} hideCard={handleHideCard} />
+			<FilterCard
+				isVisible={isCardVisible}
+				hideCard={handleHideCard}
+				filterNotificacoes={onFilter}
+			/>
 		</>
 	);
 };
 
-export default FilterButton;
+export default React.memo(FilterButton);

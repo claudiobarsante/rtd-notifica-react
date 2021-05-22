@@ -1,5 +1,6 @@
 import { Notificacao } from 'hooks/use-notificacao';
 import filter from 'lodash/filter';
+import { Utils } from 'helpers/Utils';
 
 export class Pagination {
 	static getTotalNumberOfPages(length: number, recordsPerPage: number) {
@@ -56,6 +57,27 @@ export class Search {
 			}
 			return false;
 		});
+
+		return filtered;
+	}
+	//todo: refactor filter type
+	static filterNotificacoesByDiasEmAtraso(
+		todasNotificacoes: Notificacao[],
+		filter: 'all' | 'before' | 'after'
+	): Notificacao[] {
+		const daysLimit = process.env.REACT_APP_DAYS_LIMIT_TO_COMPLETE_TASK;
+		const days = daysLimit ? parseInt(daysLimit, 10) : 0;
+
+		let filtered: Notificacao[] = [];
+
+		if (filter === 'all') {
+			filtered = [...todasNotificacoes];
+		} else if (filter === 'before') {
+			filtered = todasNotificacoes.filter(notificacao => notificacao.diasEmAtraso <= days);
+		} else if (filter === 'after') {
+			console.log('passei after');
+			filtered = todasNotificacoes.filter(notificacao => notificacao.diasEmAtraso > days);
+		}
 
 		return filtered;
 	}

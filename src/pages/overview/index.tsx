@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 //Components
 import ActivityIndicator from 'components/Activity-Indicator';
-import NotificacaoItem from 'components/notificacao/Notificacao-Item';
-import PaginationButtons from 'components/Pagination-Buttons';
-import NotificacaoSearch from 'components/notificacao/Search';
 import ClearButton from 'components/notificacao/Clear-Button';
+import FilterButton from 'components/notificacao/Filter-Button';
+import NotificacaoItem from 'components/notificacao/Notificacao-Item';
+import NotificacaoSearch from 'components/notificacao/Search';
+import PaginationButtons from 'components/Pagination-Buttons';
 //Hooks
 import { useAuth } from 'hooks/use-auth';
 import { Notificacao, useNotificacao } from 'hooks/use-notificacao';
@@ -14,7 +15,7 @@ import * as S from './styles';
 import multiImg from 'assets/multi-transp.png';
 //Logic
 import { Pagination, Search } from './logic';
-import FilterButton from 'components/notificacao/Filter-Button';
+import { Utils } from 'helpers/Utils';
 
 const FIRST_PAGE = 1;
 
@@ -24,10 +25,10 @@ const Overview = () => {
 	const [totalPages, setTotalPages] = useState<number>(0);
 	const [recordsPerPage] = useState<number>(4);
 	const [page, setPage] = useState<Notificacao[]>([]);
-	const [inputText, setInputText] = useState('');
 	const [filteredNotificacoes, setFilteredNotificacoes] = useState<Notificacao[]>(
 		{} as Notificacao[]
 	);
+	const [inputText, setInputText] = useState('');
 	//hooks
 	const { getTodasNotificacoesByOficioId, isLoading, todasNotificacoes } = useNotificacao();
 	const { currentUser } = useAuth();
@@ -85,6 +86,13 @@ const Overview = () => {
 		setFilteredNotificacoes(todasNotificacoes);
 	}, [todasNotificacoes]);
 
+	const handleFilter = useCallback(
+		(filter: 'all' | 'before' | 'after') => {
+			const filtered = Search.filterNotificacoesByDiasEmAtraso(todasNotificacoes, filter);
+			setFilteredNotificacoes(filtered);
+		},
+		[todasNotificacoes]
+	);
 	return (
 		<S.Container>
 			<S.Left>
@@ -93,7 +101,7 @@ const Overview = () => {
 			<S.TopRight>
 				<NotificacaoSearch text={inputText} onHandleChange={handleChange} />
 				<ClearButton onClick={handleClear} />
-				<FilterButton />
+				<FilterButton onFilter={handleFilter} />
 			</S.TopRight>
 			<S.Right>
 				{isLoading && <ActivityIndicator isLoading={isLoading} />}

@@ -61,8 +61,15 @@ export class Utils {
 		return splitStr.join(' ');
 	}
 
-	// static todayPtBr() {
-	// 	dayjs.extend(utc);
-	// 	return dayjs.utc(new Date()).locale('pt-br').format('DD/MM/YYYY');
-	// }
+	static todayPtBr() {
+		//dayjs.extend(utc);
+		return dayjs(new Date()).locale('pt-br').format('DD/MM/YYYY');
+	}
+
+	static diffDate(firstDate: Date, secondDate: Date, unit: 'month' | 'day') {
+		const date1 = dayjs(firstDate);
+		const date2 = dayjs(secondDate);
+
+		return date2.diff(date1, unit);
+	}
 }
