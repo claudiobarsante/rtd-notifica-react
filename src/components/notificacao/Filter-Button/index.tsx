@@ -4,13 +4,18 @@ import * as S from './styles';
 import { useState } from 'react';
 
 const FilterButton = () => {
-	const [showCard, setShowCard] = useState(true);
+	const [isCardVisible, setIsCardVisible] = useState(false);
+
+	const handleHideCard = () => {
+		setIsCardVisible(false);
+	};
+
 	return (
 		<>
-			<S.Container>
+			<S.Container onClick={() => setIsCardVisible(true)}>
 				<FiFilter />
 			</S.Container>
-			<FilterCard show={showCard} />
+			<FilterCard isVisible={isCardVisible} hideCard={handleHideCard} />
 		</>
 	);
 };

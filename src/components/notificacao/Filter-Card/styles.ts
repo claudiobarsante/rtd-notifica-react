@@ -1,15 +1,15 @@
 import styled, { css, keyframes } from 'styled-components';
 
 type ContainerProps = {
-	mostrar: boolean;
+	isVisible: boolean;
 };
 
 const appearFromRight = keyframes`
-  from {
-     transform: translateX(-5rem);
+  from{
+     right:0%
   }
   to {
-     transform: translateX(10rem);
+     right:10%;
   }
 `;
 
@@ -19,11 +19,17 @@ export const Container = styled.div<ContainerProps>`
 	width: 10rem;
 	position: absolute;
 	top: 18rem;
-	right: -5rem;
+	right: 0%;
+	z-index: 100;
 
 	${props =>
-		props.mostrar &&
+		props.isVisible &&
 		css`
 			animation: ${appearFromRight} 1s;
+			right: 10%;
 		`}
+`;
+export const OptionsContainer = styled.div``;
+export const Options = styled.ul`
+	list-style: none;
 `;
