@@ -8,9 +8,9 @@ export class Pagination {
 	}
 
 	static getRecordsPerPage(
+		allRecords: Notificacao[],
 		currentPage: number,
-		recordsPerPage: number,
-		allRecords: Notificacao[]
+		recordsPerPage: number
 	): Notificacao[] {
 		const startIdx = (currentPage - 1) * recordsPerPage;
 
@@ -24,6 +24,21 @@ export class Pagination {
 		}
 
 		return records;
+	}
+
+	static selectPage(currentPage: number, direction: 'previous' | 'next', totalPages: number) {
+		let newPage = 0;
+		if (direction === 'previous') {
+			if (currentPage === 1) return;
+			newPage = currentPage - 1;
+		}
+
+		if (direction === 'next') {
+			if (currentPage === totalPages) return;
+			newPage = currentPage + 1;
+		}
+
+		return newPage;
 	}
 }
 

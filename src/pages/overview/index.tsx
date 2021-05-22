@@ -43,9 +43,9 @@ const Overview = () => {
 	const loadRecordsToPage = useCallback(
 		(currentPage: number) => {
 			const records = Pagination.getRecordsPerPage(
+				filteredNotificacoes,
 				currentPage,
-				recordsPerPage,
-				filteredNotificacoes
+				recordsPerPage
 			);
 			setPage(records);
 		},
@@ -63,16 +63,8 @@ const Overview = () => {
 
 	const handleSelectPage = useCallback(
 		(direction: 'previous' | 'next') => {
-			let newPage = 0;
-			if (direction === 'previous') {
-				if (currentPage === 1) return;
-				newPage = currentPage - 1;
-			}
-
-			if (direction === 'next') {
-				if (currentPage === filteredNotificacoes.length) return;
-				newPage = currentPage + 1;
-			}
+			let newPage = Pagination.selectPage(currentPage, direction, filteredNotificacoes.length);
+			if (!newPage) return;
 
 			loadRecordsToPage(newPage);
 			setCurrentPage(newPage);

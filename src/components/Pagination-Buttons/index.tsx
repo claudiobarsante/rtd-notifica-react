@@ -2,8 +2,6 @@ import { Container } from './styles';
 
 type Props = {
 	totalPages: number;
-	//onPreviousClick: () => void;
-	//onNextClick: () => void;
 	onClickDirection: (direction: 'previous' | 'next') => void;
 	currentPage: number;
 };
