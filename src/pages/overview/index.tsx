@@ -64,7 +64,7 @@ const Overview = () => {
 	const handleSelectPage = useCallback(
 		(direction: 'previous' | 'next') => {
 			let newPage = Pagination.selectPage(currentPage, direction, filteredNotificacoes.length);
-			if (!newPage) return;
+			if (newPage === currentPage) return;
 
 			loadRecordsToPage(newPage);
 			setCurrentPage(newPage);

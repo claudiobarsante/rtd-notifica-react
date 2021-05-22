@@ -45,9 +45,45 @@ describe('Testing Pagination class methods', () => {
 			},
 		];
 
-		const records = Pagination.getRecordsPerPage(CURRENT_PAGE, RECORDS_PER_PAGE, ALL_RECORDS);
+		const records = Pagination.getRecordsPerPage(ALL_RECORDS, CURRENT_PAGE, RECORDS_PER_PAGE);
 
 		expect(records).toEqual(MOCK_RESULT);
 		expect(records.length).toBe(2);
+	});
+
+	it('should be able to select the next page', () => {
+		const CURRENT_PAGE = 1;
+		const DIRECTION = 'next';
+		const TOTAL_PAGES = 50;
+
+		const newPage = Pagination.selectPage(CURRENT_PAGE, DIRECTION, TOTAL_PAGES);
+		expect(newPage).toEqual(2);
+	});
+
+	it('should be able to stay on the same page, because the current page is equal to the last one', () => {
+		const CURRENT_PAGE = 50;
+		const DIRECTION = 'next';
+		const TOTAL_PAGES = 50;
+
+		const newPage = Pagination.selectPage(CURRENT_PAGE, DIRECTION, TOTAL_PAGES);
+		expect(newPage).toEqual(50);
+	});
+
+	it('should be able to select the previous page', () => {
+		const CURRENT_PAGE = 2;
+		const DIRECTION = 'previous';
+		const TOTAL_PAGES = 50;
+
+		const newPage = Pagination.selectPage(CURRENT_PAGE, DIRECTION, TOTAL_PAGES);
+		expect(newPage).toEqual(1);
+	});
+
+	it('should be able to stay on the same page, because the current page is equal to the first page', () => {
+		const CURRENT_PAGE = 1;
+		const DIRECTION = 'previous';
+		const TOTAL_PAGES = 50;
+
+		const newPage = Pagination.selectPage(CURRENT_PAGE, DIRECTION, TOTAL_PAGES);
+		expect(newPage).toEqual(1);
 	});
 });

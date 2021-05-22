@@ -29,12 +29,12 @@ export class Pagination {
 	static selectPage(currentPage: number, direction: 'previous' | 'next', totalPages: number) {
 		let newPage = 0;
 		if (direction === 'previous') {
-			if (currentPage === 1) return;
+			if (currentPage === 1) return currentPage;
 			newPage = currentPage - 1;
 		}
 
 		if (direction === 'next') {
-			if (currentPage === totalPages) return;
+			if (currentPage === totalPages) return currentPage;
 			newPage = currentPage + 1;
 		}
 
