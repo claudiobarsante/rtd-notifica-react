@@ -34,12 +34,11 @@ const Overview = () => {
 
 	useEffect(() => {
 		getTodasNotificacoesByOficioId(currentUser.oficioId);
-		setFilteredNotificacoes(todasNotificacoes);
-	}, [currentUser.oficioId, getTodasNotificacoesByOficioId, todasNotificacoes]);
+	}, [currentUser.oficioId, getTodasNotificacoesByOficioId]);
 
-	// useEffect(() => {
-	// 	setFilteredNotificacoes(todasNotificacoes);
-	// }, [todasNotificacoes]);
+	useEffect(() => {
+		setFilteredNotificacoes(todasNotificacoes);
+	}, [todasNotificacoes]);
 
 	const loadRecordsToPage = useCallback(
 		(currentPage: number) => {
@@ -59,11 +58,8 @@ const Overview = () => {
 			recordsPerPage
 		);
 		setTotalPages(countPages);
-	}, [filteredNotificacoes.length, recordsPerPage]);
-
-	useEffect(() => {
 		if (totalPages) loadRecordsToPage(FIRST_PAGE);
-	}, [loadRecordsToPage, totalPages]);
+	}, [filteredNotificacoes.length, loadRecordsToPage, recordsPerPage, totalPages]);
 
 	const handleSelectPage = useCallback(
 		(direction: 'previous' | 'next') => {
