@@ -64,21 +64,24 @@ const Overview = () => {
 		if (totalPages) loadRecordsToPage(FIRST_PAGE);
 	}, [loadRecordsToPage, totalPages]);
 
-	const handlePreviousClick = useCallback(() => {
-		if (currentPage === 1) return;
+	const handleSelectPage = useCallback(
+		(direction: 'previous' | 'next') => {
+			let newPage = 0;
+			if (direction === 'previous') {
+				if (currentPage === 1) return;
+				newPage = currentPage - 1;
+			}
 
-		const newPage = currentPage - 1;
-		loadRecordsToPage(newPage);
-		setCurrentPage(newPage);
-	}, [currentPage, loadRecordsToPage]);
+			if (direction === 'next') {
+				if (currentPage === filteredNotificacoes.length) return;
+				newPage = currentPage + 1;
+			}
 
-	const handleNextClick = useCallback(() => {
-		if (currentPage === filteredNotificacoes.length) return;
-
-		const newPage = currentPage + 1;
-		loadRecordsToPage(newPage);
-		setCurrentPage(newPage);
-	}, [filteredNotificacoes.length, currentPage, loadRecordsToPage]);
+			loadRecordsToPage(newPage);
+			setCurrentPage(newPage);
+		},
+		[currentPage, filteredNotificacoes.length, loadRecordsToPage]
+	);
 
 	//todo: add _.debounce
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -112,8 +115,7 @@ const Overview = () => {
 
 				<PaginationButtons
 					totalPages={totalPages}
-					onPreviousClick={handlePreviousClick}
-					onNextClick={handleNextClick}
+					onClickDirection={handleSelectPage}
 					currentPage={currentPage}
 				/>
 			</S.Right>

@@ -2,17 +2,18 @@ import { Container } from './styles';
 
 type Props = {
 	totalPages: number;
-	onPreviousClick: () => void;
-	onNextClick: () => void;
+	//onPreviousClick: () => void;
+	//onNextClick: () => void;
+	onClickDirection: (direction: 'previous' | 'next') => void;
 	currentPage: number;
 };
 
-const PaginationButtons = ({ totalPages, onPreviousClick, onNextClick, currentPage }: Props) => {
+const PaginationButtons = ({ totalPages, onClickDirection, currentPage }: Props) => {
 	return (
 		<Container>
-			<button onClick={onPreviousClick}>Anterior</button>
+			<button onClick={() => onClickDirection('previous')}>Anterior</button>
 			<span>{`${currentPage} de ${totalPages}`}</span>
-			<button onClick={onNextClick}>Próximo</button>
+			<button onClick={() => onClickDirection('next')}>Próximo</button>
 		</Container>
 	);
 };
