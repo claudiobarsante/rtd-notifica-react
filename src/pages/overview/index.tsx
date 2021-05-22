@@ -34,11 +34,12 @@ const Overview = () => {
 
 	useEffect(() => {
 		getTodasNotificacoesByOficioId(currentUser.oficioId);
-	}, [currentUser.oficioId, getTodasNotificacoesByOficioId]);
-
-	useEffect(() => {
 		setFilteredNotificacoes(todasNotificacoes);
-	}, [todasNotificacoes]);
+	}, [currentUser.oficioId, getTodasNotificacoesByOficioId, todasNotificacoes]);
+
+	// useEffect(() => {
+	// 	setFilteredNotificacoes(todasNotificacoes);
+	// }, [todasNotificacoes]);
 
 	const loadRecordsToPage = useCallback(
 		(currentPage: number) => {
