@@ -28,7 +28,6 @@ const Input = ({ name, inputRef, error, icon: Icon, ...rest }: Props) => {
 		setIsFocused(false);
 	}, []);
 
-	console.log('err ', error);
 	return (
 		<S.Container isErrored={!!error} isFocused={isFocused}>
 			{Icon && <Icon size={24} />}

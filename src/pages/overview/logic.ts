@@ -1,6 +1,14 @@
 import { Notificacao } from 'hooks/use-notificacao';
 import filter from 'lodash/filter';
-import { Utils } from 'helpers/Utils';
+
+export enum Direction {
+	previous = 'previous',
+	next = 'next',
+}
+
+export type PaginationDirection = {
+	pageToGo: Direction.previous | Direction.next;
+};
 
 export class Pagination {
 	static getTotalNumberOfPages(length: number, recordsPerPage: number) {
@@ -27,14 +35,14 @@ export class Pagination {
 		return records;
 	}
 
-	static selectPage(currentPage: number, direction: 'previous' | 'next', totalPages: number) {
+	static selectPage(currentPage: number, direction: PaginationDirection, totalPages: number) {
 		let newPage = 0;
-		if (direction === 'previous') {
+		if (direction.pageToGo === Direction.previous) {
 			if (currentPage === 1) return currentPage;
 			newPage = currentPage - 1;
 		}
 
-		if (direction === 'next') {
+		if (direction.pageToGo === Direction.next) {
 			if (currentPage === totalPages) return currentPage;
 			newPage = currentPage + 1;
 		}

@@ -14,8 +14,7 @@ import * as S from './styles';
 //Images
 import multiImg from 'assets/multi-transp.png';
 //Logic
-import { Pagination, Search } from './logic';
-import { Utils } from 'helpers/Utils';
+import { Pagination, Search, PaginationDirection } from './logic';
 
 const FIRST_PAGE = 1;
 
@@ -63,7 +62,7 @@ const Overview = () => {
 	}, [filteredNotificacoes.length, loadRecordsToPage, recordsPerPage, totalPages]);
 
 	const handleSelectPage = useCallback(
-		(direction: 'previous' | 'next') => {
+		(direction: PaginationDirection) => {
 			let newPage = Pagination.selectPage(currentPage, direction, filteredNotificacoes.length);
 			if (newPage === currentPage) return;
 
