@@ -1,9 +1,10 @@
+import { Filter, Filters } from 'pages/Overview/logic';
 import * as S from './styles';
 
 type Props = {
 	isVisible: boolean;
 	hideCard: () => void;
-	filterNotificacoes: (filter: 'all' | 'before' | 'after') => void;
+	filterNotificacoes: (filter: Filters) => void;
 };
 const FilterCard = ({ isVisible, hideCard, filterNotificacoes }: Props) => {
 	return (
@@ -11,15 +12,15 @@ const FilterCard = ({ isVisible, hideCard, filterNotificacoes }: Props) => {
 			<button onClick={hideCard}>Fechar</button>
 			<S.Options>
 				<li>
-					<button onClick={() => filterNotificacoes('all')}>Todas</button>
+					<button onClick={() => filterNotificacoes({ selected: Filter.ALL })}>Todas</button>
 				</li>
 				<li>
-					<button onClick={() => filterNotificacoes('before')}>
+					<button onClick={() => filterNotificacoes({ selected: Filter.BEFORE })}>
 						Em diligência com menos de 15 dias
 					</button>
 				</li>
 				<li>
-					<button onClick={() => filterNotificacoes('after')}>
+					<button onClick={() => filterNotificacoes({ selected: Filter.ALL })}>
 						Em diligência com mais de 15 dias
 					</button>
 				</li>

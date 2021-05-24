@@ -3,9 +3,10 @@ import FilterCard from '../Filter-Card';
 import * as S from './styles';
 import { useState } from 'react';
 import React from 'react';
+import { Filters } from 'pages/Overview/logic';
 
 type Props = {
-	onFilter: (filter: 'all' | 'before' | 'after') => void;
+	onFilter: (filter: Filters) => void;
 };
 const FilterButton = ({ onFilter }: Props) => {
 	const [isCardVisible, setIsCardVisible] = useState(false);

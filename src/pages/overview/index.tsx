@@ -14,7 +14,7 @@ import * as S from './styles';
 //Images
 import multiImg from 'assets/multi-transp.png';
 //Logic
-import { Pagination, Search, PaginationDirection } from './logic';
+import { Pagination, Search, PaginationDirection, Filters } from './logic';
 import { ResponseCode } from 'types/response';
 import sessionExpiredImg from '../../assets/session-expired.jpg';
 import { Redirect } from 'react-router-dom';
@@ -89,7 +89,7 @@ const Overview = () => {
 	}, [todasNotificacoes]);
 
 	const handleFilter = useCallback(
-		(filter: 'all' | 'before' | 'after') => {
+		(filter: Filters) => {
 			const filtered = Search.filterNotificacoesByDiasEmAtraso(todasNotificacoes, filter);
 			setFilteredNotificacoes(filtered);
 		},

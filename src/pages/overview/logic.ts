@@ -10,6 +10,16 @@ export type PaginationDirection = {
 	pageToGo: Direction.PREVIOUS | Direction.NEXT;
 };
 
+export enum Filter {
+	ALL = 'all',
+	BEFORE = 'before',
+	AFTER = 'after',
+}
+
+export type Filters = {
+	selected: Filter.ALL | Filter.BEFORE | Filter.AFTER;
+};
+
 export class Pagination {
 	static getTotalNumberOfPages(length: number, recordsPerPage: number) {
 		const countPages = Math.ceil(length / recordsPerPage);
@@ -71,19 +81,18 @@ export class Search {
 	//todo: refactor filter type
 	static filterNotificacoesByDiasEmAtraso(
 		todasNotificacoes: Notificacao[],
-		filter: 'all' | 'before' | 'after'
+		filter: Filters
 	): Notificacao[] {
 		const daysLimit = process.env.REACT_APP_DAYS_LIMIT_TO_COMPLETE_TASK;
 		const days = daysLimit ? parseInt(daysLimit, 10) : 0;
 
 		let filtered: Notificacao[] = [];
 
-		if (filter === 'all') {
+		if (filter.selected === Filter.ALL) {
 			filtered = [...todasNotificacoes];
-		} else if (filter === 'before') {
+		} else if (filter.selected === Filter.BEFORE) {
 			filtered = todasNotificacoes.filter(notificacao => notificacao.diasEmAtraso <= days);
-		} else if (filter === 'after') {
-			console.log('passei after');
+		} else if (filter.selected === Filter.AFTER) {
 			filtered = todasNotificacoes.filter(notificacao => notificacao.diasEmAtraso > days);
 		}
 
