@@ -30,6 +30,7 @@ export type AuthContextData = {
 	isLoading: boolean;
 	tryToSignIn: (credentials: Credentials) => void;
 	getUserFromLocalStorage: () => void;
+	resetUserState: () => void;
 };
 
 export const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -131,13 +132,20 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 		setData(data => ({ ...data, user: currentUser, token }));
 	}, []);
 
+	const resetUserState = useCallback(() => {
+		localStorage.removeItem(TOKEN_KEY);
+		localStorage.removeItem(USER_KEY);
+
+		setData(INITIAL_STATE);
+	}, []);
 	return (
 		<AuthContext.Provider
 			value={{
 				currentUser: data.user,
 				isLoading: data.isLoading,
-				tryToSignIn,
 				getUserFromLocalStorage,
+				resetUserState,
+				tryToSignIn,
 			}}
 		>
 			{children}

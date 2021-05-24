@@ -15,6 +15,9 @@ import * as S from './styles';
 import multiImg from 'assets/multi-transp.png';
 //Logic
 import { Pagination, Search, PaginationDirection } from './logic';
+import { ResponseCode } from 'types/response';
+import sessionExpiredImg from '../../assets/session-expired.jpg';
+import { Redirect } from 'react-router-dom';
 
 const FIRST_PAGE = 1;
 
@@ -29,8 +32,8 @@ const Overview = () => {
 	);
 	const [inputText, setInputText] = useState('');
 	//hooks
-	const { getTodasNotificacoesByOficioId, isLoading, todasNotificacoes } = useNotificacao();
-	const { currentUser } = useAuth();
+	const { getTodasNotificacoesByOficioId, isLoading, todasNotificacoes, error } = useNotificacao();
+	const { currentUser, resetUserState } = useAuth();
 
 	useEffect(() => {
 		getTodasNotificacoesByOficioId(currentUser.oficioId);
@@ -92,6 +95,31 @@ const Overview = () => {
 		},
 		[todasNotificacoes]
 	);
+
+	//todo: refactor UNAUTHORIZED and modal
+	const { code, message } = error;
+
+	const handleCloseModal = useCallback(() => {
+		resetUserState();
+		return <Redirect to='/' />;
+	}, [resetUserState]);
+
+	if (code === ResponseCode.UNAUTHORIZED) {
+		return (
+			<S.StyledModal isOpen={true}>
+				<div>
+					<h2>Sessão expirada</h2>
+					<h4>{message}</h4>
+					<img
+						src={sessionExpiredImg}
+						alt='Imagem em azul com um ícnoe indicando para recarregar a página'
+					/>
+					<button onClick={() => handleCloseModal()}>Fazer login novamente</button>
+				</div>
+			</S.StyledModal>
+		);
+	}
+
 	return (
 		<S.Container>
 			<S.Left>

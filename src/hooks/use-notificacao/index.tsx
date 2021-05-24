@@ -35,8 +35,9 @@ const INITIAL_STATE: NotificacoesState = {
 };
 
 export type NotificacoesContextData = {
-	todasNotificacoes: Notificacao[];
+	error: ResponseError;
 	isLoading: boolean;
+	todasNotificacoes: Notificacao[];
 	getTodasNotificacoesByOficioId: (oficioId: number) => void;
 };
 
@@ -58,6 +59,7 @@ const NotificacoesProvider = ({ children }: NotificacoesProviderProps) => {
 			const notificacoes: Notificacao[] = JSON.parse(response.data);
 			setData(data => ({ ...data, todasNotificacoes: notificacoes }));
 		} catch (error) {
+			console.log('hook', error);
 			const { code, message } = Error.formatErrorMessage(error.toString());
 			setData(data => ({ ...data, error: { code, message } }));
 		}
@@ -68,6 +70,7 @@ const NotificacoesProvider = ({ children }: NotificacoesProviderProps) => {
 		<NotificacoesContext.Provider
 			value={{
 				isLoading: data.isLoading,
+				error: data.error,
 				todasNotificacoes: data.todasNotificacoes,
 				getTodasNotificacoesByOficioId,
 			}}

@@ -22,6 +22,7 @@ export const Container = styled.div`
 		font-size: 1.8rem;
 		margin: 0.2rem;
 		outline: 0;
+		flex-grow: 1;
 
 		&::placeholder {
 			color: var(--gray-hard);

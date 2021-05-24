@@ -2,12 +2,12 @@ import { Notificacao } from 'hooks/use-notificacao';
 import filter from 'lodash/filter';
 
 export enum Direction {
-	previous = 'previous',
-	next = 'next',
+	PREVIOUS = 'previous',
+	NEXT = 'next',
 }
 
 export type PaginationDirection = {
-	pageToGo: Direction.previous | Direction.next;
+	pageToGo: Direction.PREVIOUS | Direction.NEXT;
 };
 
 export class Pagination {
@@ -37,12 +37,12 @@ export class Pagination {
 
 	static selectPage(currentPage: number, direction: PaginationDirection, totalPages: number) {
 		let newPage = 0;
-		if (direction.pageToGo === Direction.previous) {
+		if (direction.pageToGo === Direction.PREVIOUS) {
 			if (currentPage === 1) return currentPage;
 			newPage = currentPage - 1;
 		}
 
-		if (direction.pageToGo === Direction.next) {
+		if (direction.pageToGo === Direction.NEXT) {
 			if (currentPage === totalPages) return currentPage;
 			newPage = currentPage + 1;
 		}

@@ -53,7 +53,7 @@ describe('Testing Pagination class methods', () => {
 
 	it('should be able to select the next page', () => {
 		const CURRENT_PAGE = 1;
-		const DIRECTION = { pageToGo: Direction.next };
+		const DIRECTION = { pageToGo: Direction.NEXT };
 		const TOTAL_PAGES = 50;
 
 		const newPage = Pagination.selectPage(CURRENT_PAGE, DIRECTION, TOTAL_PAGES);
@@ -62,7 +62,7 @@ describe('Testing Pagination class methods', () => {
 
 	it('should be able to stay on the same page, because the current page is equal to the last one', () => {
 		const CURRENT_PAGE = 50;
-		const DIRECTION = { pageToGo: Direction.next };
+		const DIRECTION = { pageToGo: Direction.NEXT };
 		const TOTAL_PAGES = 50;
 
 		const newPage = Pagination.selectPage(CURRENT_PAGE, DIRECTION, TOTAL_PAGES);
@@ -71,7 +71,7 @@ describe('Testing Pagination class methods', () => {
 
 	it('should be able to select the previous page', () => {
 		const CURRENT_PAGE = 2;
-		const DIRECTION = { pageToGo: Direction.previous };
+		const DIRECTION = { pageToGo: Direction.PREVIOUS };
 		const TOTAL_PAGES = 50;
 
 		const newPage = Pagination.selectPage(CURRENT_PAGE, DIRECTION, TOTAL_PAGES);
@@ -80,7 +80,7 @@ describe('Testing Pagination class methods', () => {
 
 	it('should be able to stay on the same page, because the current page is equal to the first page', () => {
 		const CURRENT_PAGE = 1;
-		const DIRECTION = { pageToGo: Direction.previous };
+		const DIRECTION = { pageToGo: Direction.PREVIOUS };
 		const TOTAL_PAGES = 50;
 
 		const newPage = Pagination.selectPage(CURRENT_PAGE, DIRECTION, TOTAL_PAGES);

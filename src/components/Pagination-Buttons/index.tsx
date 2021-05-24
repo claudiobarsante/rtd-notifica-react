@@ -10,9 +10,9 @@ type Props = {
 const PaginationButtons = ({ totalPages, onClickDirection, currentPage }: Props) => {
 	return (
 		<Container>
-			<button onClick={() => onClickDirection({ pageToGo: Direction.previous })}>Anterior</button>
+			<button onClick={() => onClickDirection({ pageToGo: Direction.PREVIOUS })}>Anterior</button>
 			<span>{`${currentPage} de ${totalPages}`}</span>
-			<button onClick={() => onClickDirection({ pageToGo: Direction.next })}>Próximo</button>
+			<button onClick={() => onClickDirection({ pageToGo: Direction.NEXT })}>Próximo</button>
 		</Container>
 	);
 };
