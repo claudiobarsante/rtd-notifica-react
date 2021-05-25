@@ -3,7 +3,7 @@ import { AiOutlineFileText } from 'react-icons/ai';
 
 export const NotificacaoContainer = styled.div`
 	width: 67rem;
-	height: 15rem;
+	height: 13rem;
 	border-radius: 1rem;
 	background: white;
 	margin-bottom: 2.5rem;
@@ -21,8 +21,7 @@ export const NotificacaoContainer = styled.div`
 export const NotIcon = styled(AiOutlineFileText)`
 	width: 4rem;
 	height: 4rem;
-	//fill: var(--icon);
-	//flex-shrink: 0;
+
 	border: 0;
 	border-radius: 50%;
 	background: var(--success);

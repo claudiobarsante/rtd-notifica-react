@@ -136,13 +136,14 @@ const Overview = () => {
 					page.map(notificacao => (
 						<NotificacaoItem key={notificacao.notificadoId} notificacaoDetails={notificacao} />
 					))}
-
+			</S.Right>
+			<S.Pagination>
 				<PaginationButtons
 					totalPages={totalPages}
 					onClickDirection={handleSelectPage}
 					currentPage={currentPage}
 				/>
-			</S.Right>
+			</S.Pagination>
 		</S.Container>
 	);
 };

@@ -78,7 +78,7 @@ export class Search {
 
 		return filtered;
 	}
-	//todo: refactor filter type
+
 	static filterNotificacoesByDiasEmAtraso(
 		todasNotificacoes: Notificacao[],
 		filter: Filters

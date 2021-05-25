@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import Modal from 'styled-react-modal';
 
 export const Container = styled.div`
-	//height: 100vh;
+	height: 100%;
 	display: grid;
-	grid-template-rows: 10fr 90fr;
+	grid-template-rows: 10fr 80fr 10fr;
 	grid-template-columns: 50fr 50fr; //50fr means 50% of available space
-	grid-template-areas: 'topLeft topRight' 'image list';
-	//border: 3px solid lightgrey;
+	grid-template-areas: 'image search' 'image list' 'image pagination';
+	border: 3px solid lightgrey;
 	//justify-items: center;
 	//align-items: center;
 	//justify-items - aligns items inside the grid horizontaly
@@ -28,11 +28,12 @@ export const Left = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	flex-grow: 1;
 
 	grid-area: image;
 
 	img {
-		height: 75rem;
+		height: 80rem;
 		width: 80rem;
 	}
 	border: 1px solid green;
@@ -51,10 +52,18 @@ export const Right = styled.div`
 `;
 export const TopRight = styled.div`
 	display: flex;
-	grid-area: topRight;
+	grid-area: search;
 
 	border: 3px solid red;
 	padding: 1rem;
+`;
+
+export const Pagination = styled.div`
+	grid-area: pagination;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 `;
 export const StyledModal = Modal.styled`
 display: flex;
