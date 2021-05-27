@@ -15,7 +15,7 @@ const SessionExpired = ({ message, onButtonClick }: Props) => {
           src={sessionExpiredImg}
           alt="Imagem em azul com um ícnoe indicando para recarregar a página"
         />
-        <button onClick={onButtonClick}>Fazer login novamente</button>
+        <button onClick={() => onButtonClick()}>Fazer login novamente</button>
       </S.Body>
     </S.StyledModal>
   );

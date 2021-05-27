@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 // -- Components
 import ActivityIndicator from 'components/Activity-Indicator';
 import ClearButton from 'components/notificacao/Clear-Button';
@@ -18,10 +19,7 @@ import multiImg from 'assets/multi-transp.png';
 import { Pagination, Search, PaginationDirection, Filters } from './logic';
 import { ResponseCode } from 'types/response';
 
-import { Redirect } from 'react-router-dom';
-
 const FIRST_PAGE = 1;
-const NO_ERRORS = 0;
 
 const Overview = () => {
   // -- State
@@ -41,6 +39,8 @@ const Overview = () => {
     error
   } = useNotificacao();
   const { currentUser, resetUserState } = useAuth();
+
+  const { code, message } = error;
 
   useEffect(() => {
     getTodasNotificacoesByOficioId(currentUser.oficioId);
@@ -115,9 +115,7 @@ const Overview = () => {
     [todasNotificacoes]
   );
 
-  //todo: refactor UNAUTHORIZED and modal
-  const { code, message } = error;
-
+  console.log('code fora', code);
   const handleCloseModal = useCallback(() => {
     resetUserState();
     return <Redirect to="/" />;
