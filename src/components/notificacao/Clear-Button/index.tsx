@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { IoClose } from 'react-icons/io5';
 import ReactTooltip from 'react-tooltip';
 import * as S from './styles';
@@ -19,4 +19,4 @@ const ClearButton = ({ onClick }: Props) => {
   );
 };
 
-export default React.memo(ClearButton);
+export default memo(ClearButton);

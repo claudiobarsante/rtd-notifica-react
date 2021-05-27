@@ -27,7 +27,7 @@ export const Left = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-grow: 1;
+  //flex-grow: 1;
 
   grid-area: image;
 

@@ -7,20 +7,20 @@ type DiasEmAtrasoCalendarProps = {
 };
 
 export const NotificacaoContainer = styled.div`
-  width: 67rem;
-  height: 13rem;
-  border-radius: 1rem;
   background: white;
+  border-radius: 1rem;
   margin-bottom: 2.5rem;
-  //?shadow
+  position: relative;
+
+  height: 13rem;
+  width: 67rem;
+  // -- shadow
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
 
   &:hover {
     box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
   }
-  position: relative;
-  //border: 1px solid red;
 `;
 
 export const NotIcon = styled(AiOutlineFileText)`
@@ -80,6 +80,7 @@ export const DiasEmAtrasoCalendar = styled(
 )<DiasEmAtrasoCalendarProps>`
   height: 2.5rem;
   widht: 2.5rem;
+
   ${props =>
     props.isLate &&
     css`

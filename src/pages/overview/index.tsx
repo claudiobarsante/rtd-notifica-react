@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import ActivityIndicator from 'components/Activity-Indicator';
 import ClearButton from 'components/notificacao/Clear-Button';
 import FilterButton from 'components/notificacao/Filter-Button';
-import NotificacaoItem from 'components/notificacao/Notificacao-Item';
+import { NotificacaoItem } from 'components/notificacao/Notificacao-Item';
 import NotificacaoSearch from 'components/notificacao/Search';
 import PaginationActions from 'components/Pagination';
 import SessionExpired from 'components/Modal/Session-Expired';
