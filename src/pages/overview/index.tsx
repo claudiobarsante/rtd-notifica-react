@@ -1,28 +1,30 @@
 import React, { useCallback, useEffect, useState } from 'react';
-//Components
+// -- Components
 import ActivityIndicator from 'components/Activity-Indicator';
 import ClearButton from 'components/notificacao/Clear-Button';
 import FilterButton from 'components/notificacao/Filter-Button';
 import NotificacaoItem from 'components/notificacao/Notificacao-Item';
 import NotificacaoSearch from 'components/notificacao/Search';
 import PaginationActions from 'components/Pagination';
-//Hooks
+import SessionExpired from 'components/Modal/Session-Expired';
+// -- Hooks
 import { useAuth } from 'hooks/use-auth';
 import { Notificacao, useNotificacao } from 'hooks/use-notificacao';
-//Styles
+// -- Styles
 import * as S from './styles';
-//Images
+// -- Images
 import multiImg from 'assets/multi-transp.png';
-//Logic
+// -- Logic
 import { Pagination, Search, PaginationDirection, Filters } from './logic';
 import { ResponseCode } from 'types/response';
-import sessionExpiredImg from '../../assets/session-expired.jpg';
+
 import { Redirect } from 'react-router-dom';
 
 const FIRST_PAGE = 1;
+const NO_ERRORS = 0;
 
 const Overview = () => {
-  //state
+  // -- State
   const [currentPage, setCurrentPage] = useState<number>(FIRST_PAGE);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [recordsPerPage] = useState<number>(4);
@@ -31,7 +33,7 @@ const Overview = () => {
     Notificacao[]
   >({} as Notificacao[]);
   const [inputText, setInputText] = useState('');
-  //hooks
+  // -- Hooks
   const {
     getTodasNotificacoesByOficioId,
     isLoading,
@@ -123,19 +125,7 @@ const Overview = () => {
 
   if (code === ResponseCode.UNAUTHORIZED) {
     return (
-      <S.StyledModal isOpen={true}>
-        <div>
-          <h2>Sessão expirada</h2>
-          <h4>{message}</h4>
-          <img
-            src={sessionExpiredImg}
-            alt="Imagem em azul com um ícnoe indicando para recarregar a página"
-          />
-          <button onClick={() => handleCloseModal()}>
-            Fazer login novamente
-          </button>
-        </div>
-      </S.StyledModal>
+      <SessionExpired message={message} onButtonClick={handleCloseModal} />
     );
   }
 
