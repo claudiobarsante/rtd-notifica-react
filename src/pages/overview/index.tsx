@@ -40,8 +40,6 @@ const Overview = () => {
   } = useNotificacao();
   const { currentUser, resetUserState } = useAuth();
 
-  const { code, message } = error;
-
   useEffect(() => {
     getTodasNotificacoesByOficioId(currentUser.oficioId);
   }, [currentUser.oficioId, getTodasNotificacoesByOficioId]);
@@ -115,11 +113,12 @@ const Overview = () => {
     [todasNotificacoes]
   );
 
-  console.log('code fora', code);
   const handleCloseModal = useCallback(() => {
     resetUserState();
     return <Redirect to="/" />;
   }, [resetUserState]);
+
+  const { code, message } = error;
 
   if (code === ResponseCode.UNAUTHORIZED) {
     return (
