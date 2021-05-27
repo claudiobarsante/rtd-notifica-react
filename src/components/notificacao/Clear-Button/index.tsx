@@ -4,20 +4,19 @@ import ReactTooltip from 'react-tooltip';
 import * as S from './styles';
 
 type Props = {
-	onClick: () => void;
+  onClick: () => void;
 };
 const ClearButton = ({ onClick }: Props) => {
-	console.log('renderizando clear button');
-	return (
-		<>
-			<S.Container onClick={onClick} data-tip data-for='ClearButton'>
-				<IoClose />
-			</S.Container>
-			<ReactTooltip id='ClearButton' place='top' effect='float' type='success'>
-				Limpa sua pesquisa
-			</ReactTooltip>
-		</>
-	);
+  return (
+    <>
+      <S.Button onClick={onClick} data-tip data-for="ClearButton">
+        <IoClose />
+      </S.Button>
+      <ReactTooltip id="ClearButton" place="top" effect="float" type="success">
+        Limpa sua pesquisa
+      </ReactTooltip>
+    </>
+  );
 };
 
 export default React.memo(ClearButton);

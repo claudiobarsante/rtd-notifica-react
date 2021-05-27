@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  background: var(--purple);
-  border-radius: 1rem;
+  background: transparent;
   border: 0;
-  margin-left: 2rem;
 
   height: 5.6rem;
   width: 5.6rem;
@@ -16,8 +14,9 @@ export const Button = styled.button`
   }
 
   svg {
-    color: white;
-    height: 2.5rem;
-    width: 2.5rem;
+    color: var(--purple);
+
+    height: 3rem;
+    width: 3rem;
   }
 `;
