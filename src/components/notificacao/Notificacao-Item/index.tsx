@@ -32,12 +32,21 @@ const NotificacaoItemComponent = ({ notificacaoDetails }: Props) => {
 };
 
 // -- about memo
-/* -- React.memo uses a shallow comparison {} === {} false, so when you are just passing a
-string, number, boolean as props there's no problem to use it.
-By default it will only shallowly compare complex objects in the props object. 
+/* -- React.memo by default does a shallow comparison of props and objects of props,
+so when you are just passing a string, number, boolean as props there's no problem to use it.
 If you want control over the comparison, you can also provide a custom comparison
-function as the second argument to indicate an equality check function. You could check if the previous props and the actual props 
+function as the second argument to indicate an equality check function.
+React.memo(Component, [areEqual(prevProps, nextProps)]);
+Function must return true if prevProps and nextProps are equal.
+You could check if the previous props and the actual props 
 are equal using a javascript function Object.is() or '===' for reference equality*/
+// -- When a React component should be wrapped in React.memo ?
+/*
+1- Pure functional component - your component is functional and given the sames props, always renders the same ouput
+2 - Renders often - your component renders often
+3- Re-renders with the same props - your component is usually provided with the same props during re-rendering
+4 - Medium to big size - your component contains a decent amount of UI elements to reason props equality check 
+*/
 
 export const NotificacaoItem = memo(
   NotificacaoItemComponent,

@@ -12,7 +12,7 @@ export const Container = styled.div`
   border-radius: 1rem;
   border: 2px solid var(--primary);
   color: var(--grey-hard);
-  margin-left: 13rem;
+  margin-left: 22%;
   padding: 16px;
 
   input {

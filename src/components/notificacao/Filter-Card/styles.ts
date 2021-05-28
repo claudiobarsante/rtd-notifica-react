@@ -19,7 +19,7 @@ export const Container = styled.div<ContainerProps>`
   border-radius: 1rem;
   border:0
   height: 10rem;
-  width: 25rem;
+  width: 27rem;
   position: fixed;
   top: 18rem;
   right: -30rem;
@@ -61,7 +61,7 @@ export const OptionButton = styled.button`
   background-color: transparent;
   border: 0;
   font-size: 1.3rem;
-  padding: 0.7rem;
+  padding: 0.7rem 1.3rem;
   width: 100%;
   text-align: left;
 
@@ -69,6 +69,11 @@ export const OptionButton = styled.button`
 
   &:hover {
     background-color: #637be9;
+
+    &:after {
+      content: '✔';
+      margin-left: 0.5rem;
+    }
   }
 
   &:last-child {
