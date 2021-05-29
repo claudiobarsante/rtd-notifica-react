@@ -32,7 +32,7 @@ export const Body = styled.div`
   }
 
   button {
-    background: var(--purple);
+    background: var(--accent);
     border-radius: 1rem;
     border: 0;
     color: white;

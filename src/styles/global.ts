@@ -2,21 +2,21 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 :root {
-  --error:#c53030;
-  --lightBlue:#007aff;
-  --success: #73bd73;
-  --purple:#788EEC;
-  --white:#F4EDE8;
-  --grey:#f3f2f2;
-  --grey-hard:#666360;
-  --grey-dark: #42403e;
-  --background-modal:#f0f2f5;
   --primary:#0099ff;
-  --sm:768px;
+  --success: #73bd73;
+  --error:#c53030;
+  --accent:#788EEC;
+  --background-modal:#f0f2f5;
   --black-20: "#333333"; //black 20%
   --black-35: "#595959";
   --black-40: "#666666";
   --black-80: "#ccc"; 
+  --grey-dark: #42403e;
+  --grey-hard:#666360;
+  --grey:#f3f2f2;
+  --light-blue:#007aff;
+  --sm:768px;
+  --white:#F4EDE8;
 }
 
 *,*::after,*::before {
@@ -27,8 +27,7 @@ export default createGlobalStyle`
 
 html{
     font-size:62.5%;
-    min-height:100%;
-    
+    min-height:100%;    
 }
 
 
@@ -41,7 +40,6 @@ body{
 body, input, button{
   font-family: 'Inter',serif;
   font-size:1.6rem;
-
 }
 
 h1,h2,h3,h4,h5,h6, strong{

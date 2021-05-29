@@ -14,7 +14,7 @@ export const Button = styled.button`
   }
 
   svg {
-    color: var(--purple);
+    color: var(--accent);
 
     height: 3rem;
     width: 3rem;

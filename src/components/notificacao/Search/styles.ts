@@ -7,7 +7,7 @@ export const Container = styled.div`
 
   height: 5.6rem;
   // width: 40rem;
-  width: 30vw;
+  width: min(90%, 70.5rem);
 
   background: var(--grey);
   border-radius: 1rem;
@@ -19,14 +19,14 @@ export const Container = styled.div`
   input {
     background: transparent;
     border: 0;
-    color: var(--gray-hard);
+    color: var(--grey-hard);
     font-size: 1.8rem;
     margin: 0.2rem;
     outline: 0;
     flex-grow: 1;
 
     &::placeholder {
-      color: var(--gray-hard);
+      color: var(--grey-hard);
     }
   }
 `;

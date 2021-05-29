@@ -37,12 +37,12 @@ export const Container = styled.div<ContainerProps>`
     background: transparent;
     border: 0;
     outline: 0;
-    color: var(--gray-hard);
+    color: var(--grey-hard);
     font-size: 1.8rem;
     margin: 0.2rem;
 
     &::placeholder {
-      color: var(--gray-hard);
+      color: var(--grey-hard);
     }
   }
 

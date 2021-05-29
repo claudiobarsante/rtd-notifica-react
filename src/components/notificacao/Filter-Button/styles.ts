@@ -6,7 +6,7 @@ export const Container = styled.button`
   //margin-left: 3rem;
 
   svg {
-    color: var(--purple);
+    color: var(--accent);
 
     height: 4.5rem;
     width: 4.5rem;
