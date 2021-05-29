@@ -4,7 +4,7 @@ export const Container = styled.div`
   height: 100%;
   display: grid;
   grid-template-rows: 10fr 80fr 10fr;
-  grid-template-columns: 40fr 60fr; //50fr means 50% of available space
+  grid-template-columns: 50fr 50fr; //50fr means 50% of available space
   grid-template-areas: 'image search' 'image list' 'image pagination';
   border: 3px solid lightgrey;
   // justify-items: center;
@@ -25,7 +25,7 @@ export const Container = styled.div`
   } */
   @media screen and (max-width: 1415px) {
     display: grid;
-    grid-template-columns: 45% 55%;
+    grid-template-columns: 40% 60%;
   }
 `;
 

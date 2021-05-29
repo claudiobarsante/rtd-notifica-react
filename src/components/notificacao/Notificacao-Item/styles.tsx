@@ -12,7 +12,7 @@ export const NotificacaoContainer = styled.div`
   margin-bottom: 2.5rem;
   position: relative;
 
-  height: 13rem;
+  height: 15rem;
   width: 40vw;
   // -- shadow
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2);
