@@ -135,9 +135,11 @@ const Overview = () => {
         />
       </S.Left>
       <S.TopRight>
-        <NotificacaoSearch text={inputText} onHandleChange={handleChange} />
-        <ClearButton onClick={handleClear} />
-        <FilterButton onFilter={handleFilter} />
+        <S.SearchAndFilterContainer>
+          <NotificacaoSearch text={inputText} onHandleChange={handleChange} />
+          <ClearButton onClick={handleClear} />
+          <FilterButton onFilter={handleFilter} />
+        </S.SearchAndFilterContainer>
       </S.TopRight>
       <S.Right>
         {isLoading && <ActivityIndicator isLoading={isLoading} />}

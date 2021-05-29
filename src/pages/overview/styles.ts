@@ -4,7 +4,7 @@ export const Container = styled.div`
   height: 100%;
   display: grid;
   grid-template-rows: 10fr 80fr 10fr;
-  grid-template-columns: 50fr 50fr; //50fr means 50% of available space
+  grid-template-columns: 40fr 60fr; //50fr means 50% of available space
   grid-template-areas: 'image search' 'image list' 'image pagination';
   border: 3px solid lightgrey;
   // justify-items: center;
@@ -17,11 +17,15 @@ export const Container = styled.div`
   justify-content: center; //align the entire grid horizontaly
   align-content: center; //align the entire grid vertically
 
-  @media screen and (max-width: 1502px) {
+  /* @media screen and (max-width: 1502px) {
     display: grid;
     grid-template-rows: 40fr 5fr 50fr 5fr;
     grid-template-columns: 100fr;
     grid-template-areas: 'image' 'search' 'list' 'pagination';
+  } */
+  @media screen and (max-width: 1415px) {
+    display: grid;
+    grid-template-columns: 45% 55%;
   }
 `;
 
@@ -29,7 +33,7 @@ export const Container = styled.div`
 // 	height: 5rem;
 // 	grid-area: title; //to place the element on a specific area, this is the same as grid-column:1/ span 2
 // `;
-export const Left = styled.div`
+export const Left = styled.figure`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,17 +43,23 @@ export const Left = styled.div`
   grid-area: image;
 
   img {
-    height: 80rem;
-    width: 80rem;
+    height: 85vh;
+    width: 50vw;
+    object-fit: contain;
+    padding: 0 1rem;
+
+    @media screen and (max-width: 1415px) {
+      width: 45vw;
+    }
   }
 
-  @media screen and (max-width: 1502px) {
+  /* @media screen and (max-width: 1502px) {
     img {
       object-fit: contain;
       height: auto;
       width: auto;
     }
-  }
+  } */
   border: 1px solid green;
 `;
 export const Right = styled.div`
@@ -64,15 +74,23 @@ export const Right = styled.div`
   padding-top: 3rem;
   width: 100%;
 `;
-export const TopRight = styled.div`
+export const TopRight = styled.section`
   display: flex;
+  align-items: center;
   grid-area: search;
 
   border: 3px solid red;
-  padding: 1rem;
+  // padding: 1rem;
 `;
 
-export const Pagination = styled.div`
+export const SearchAndFilterContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  //align-items: center;
+  border: 1px solid var(--primary);
+`;
+
+export const Pagination = styled.footer`
   grid-area: pagination;
   display: flex;
   flex-direction: column;
