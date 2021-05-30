@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 100%;
+  height: 100vh;
   display: grid;
-  grid-template-rows: 10fr 80fr 10fr;
-  grid-template-columns: 50fr 50fr; //50fr means 50% of available space
+  grid-template-rows: 10% 80% 10%;
+  grid-template-columns: 40% 60%; //50fr means 50% of available space
   grid-template-areas: 'image search' 'image list' 'image pagination';
   border: 3px solid lightgrey;
   // justify-items: center;
@@ -23,10 +23,10 @@ export const Container = styled.div`
     grid-template-columns: 100fr;
     grid-template-areas: 'image' 'search' 'list' 'pagination';
   } */
-  @media screen and (max-width: 1415px) {
+  /* @media screen and (max-width: 1415px) {
     display: grid;
     grid-template-columns: 40% 60%;
-  }
+  } */
 `;
 
 // export const Title = styled.div`

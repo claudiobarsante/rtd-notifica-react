@@ -40,6 +40,8 @@ const Overview = () => {
   } = useNotificacao();
   const { currentUser, resetUserState } = useAuth();
 
+  console.log('current-user', currentUser);
+
   useEffect(() => {
     getTodasNotificacoesByOficioId(currentUser.oficioId);
   }, [currentUser.oficioId, getTodasNotificacoesByOficioId]);
