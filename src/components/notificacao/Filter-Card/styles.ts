@@ -14,7 +14,7 @@ const appearFromRight = keyframes`
 `;
 
 export const Container = styled.div<ContainerProps>`
-  background: var(--purple);
+  background: var(--accent);
   opacity: 0.9;
   border-radius: 1rem;
   border:0

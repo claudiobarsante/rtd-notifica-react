@@ -6,6 +6,7 @@ export default createGlobalStyle`
   --success: #73bd73;
   --error:#c53030;
   --accent:#788EEC;
+  --accent-light:#bcc7f5;
   --background-modal:#f0f2f5;
   --black-20: "#333333"; //black 20%
   --black-35: "#595959";

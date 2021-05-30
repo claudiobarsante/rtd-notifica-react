@@ -3,8 +3,9 @@ import styled from 'styled-components';
 export const Button = styled.button`
   background: var(--accent);
   border-radius: 1rem;
-  border: 0;
+  border: 3.5px solid var(--accent-light);
   margin-left: 2rem;
+  //outline: 0;
 
   height: 5.6rem;
   width: 5.6rem;

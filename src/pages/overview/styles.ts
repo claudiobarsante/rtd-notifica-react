@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 100vh;
+  height: 100%;
   display: grid;
-  grid-template-rows: 10% 80% 10%;
+  grid-template-rows: 10% 85% 5%;
   grid-template-columns: 40% 60%; //50fr means 50% of available space
   grid-template-areas: 'image search' 'image list' 'image pagination';
   border: 3px solid lightgrey;
