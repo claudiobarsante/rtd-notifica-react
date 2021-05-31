@@ -24,7 +24,7 @@ export const NotificacaoContainer = styled.div`
 `;
 
 export const NotIcon = styled(AiOutlineFileText)`
-  background: var(--success);
+  background: var(--color-success);
   border-radius: 50%;
   border: 0;
   color: white;
@@ -48,17 +48,17 @@ export const Body = styled.ul`
 `;
 
 export const Protocolo = styled.li`
-  color: var(--grey-dark);
+  color: var(--color-grey-dark);
   font-weight: 500;
 `;
 
 export const Nome = styled.li`
-  color: var(--grey-hard);
+  color: var(--color-grey-hard);
   font-size: 1.4rem;
 `;
 
 export const Endereco = styled.li`
-  color: var(--grey-hard);
+  color: var(--color-grey-hard);
   font-size: 1.4rem;
 `;
 export const DiasEmAtrasoContainer = styled.div`
@@ -70,7 +70,7 @@ export const DiasEmAtrasoContainer = styled.div`
 
   span {
     display: inline-flex;
-    color: var(--grey-hard);
+    color: var(--color-grey-hard);
     font-size: 1.4rem;
     padding-left: 0.2rem;
   }
@@ -84,12 +84,12 @@ export const DiasEmAtrasoCalendar = styled(
   ${props =>
     props.isLate &&
     css`
-      color: var(--error);
+      color: var(--color-error);
     `}
 
   ${props =>
     !props.isLate &&
     css`
-      color: var(--success);
+      color: var(--color-success);
     `}
 `;

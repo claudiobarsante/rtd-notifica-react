@@ -87,7 +87,7 @@ export const SearchAndFilterContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   //align-items: center;
-  border: 1px solid var(--primary);
+  border: 1px solid var(--color-primary);
 `;
 
 export const Pagination = styled.footer`

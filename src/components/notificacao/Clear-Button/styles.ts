@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  background: var(--accent);
+  background: var(--color-accent);
   border-radius: 1rem;
-  border: 3.5px solid var(--accent-light);
+  border: 3.5px solid var(--color-accent-light);
   margin-left: 2rem;
   //outline: 0;
 

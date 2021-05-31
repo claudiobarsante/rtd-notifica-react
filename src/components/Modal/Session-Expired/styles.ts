@@ -23,16 +23,16 @@ export const Body = styled.div`
   text-align: center;
 
   h2 {
-    color: var(--grey-dark);
+    color: var(--color-grey-dark);
   }
 
   h4 {
-    color: var(--grey-hard);
+    color: var(--color-grey-hard);
     padding: 2rem;
   }
 
   button {
-    background: var(--accent);
+    background: var(--color-accent);
     border-radius: 1rem;
     border: 0;
     color: white;

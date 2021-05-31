@@ -6,6 +6,6 @@ export const Container = styled.div`
   justify-content: center;
 
   span {
-    color: var(--grey-dark);
+    color: var(--color-grey-dark);
   }
 `;

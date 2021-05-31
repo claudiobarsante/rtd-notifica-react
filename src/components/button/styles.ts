@@ -8,10 +8,10 @@ export const Container = styled.button`
   height: 5.6rem;
   width: 100%;
 
-  background: var(--primary);
+  background: var(--color-primary);
   border-radius: 1rem;
   border: 0;
-  color: var(--white);
+  color: var(--color-white);
   font-size: 2rem;
   font-weight: 500;
   letter-spacing: 0.2rem;

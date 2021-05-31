@@ -16,7 +16,7 @@ export const Container = styled.div`
 const iconCss = css`
   width: 2.4rem;
   height: 2.4rem;
-  fill: var(--primary);
+  fill: var(--color-primary);
   // flex-shrink: 0;
 `;
 export const PinIcon = styled(IoPin)`

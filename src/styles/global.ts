@@ -2,22 +2,22 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 :root {
-  --primary:#0099ff;
-  --success: #73bd73;
-  --error:#c53030;
-  --accent:#788EEC;
-  --accent-light:#bcc7f5;
-  --background-modal:#f0f2f5;
-  --black-20: "#333333"; //black 20%
-  --black-35: "#595959";
-  --black-40: "#666666";
-  --black-80: "#ccc"; 
-  --grey-dark: #42403e;
-  --grey-hard:#666360;
-  --grey:#f3f2f2;
-  --light-blue:#007aff;
+  --color-primary:#0099ff;
+  --color-success: #73bd73;
+  --color-error:#c53030;
+  --color-accent:#788EEC;
+  --color-accent-light:#bcc7f5;
+  --color-background-modal:#f0f2f5;
+  --color-black-20: "#333333"; //black 20%
+  --color-black-35: "#595959";
+  --color-black-40: "#666666";
+  --color-black-80: "#ccc"; 
+  --color-grey-dark: #42403e;
+  --color-grey-hard:#666360;
+  --color-grey:#f3f2f2;
+  --color-light-blue:#007aff;
   --sm:768px;
-  --white:#F4EDE8;
+  --color-white:#F4EDE8;
 }
 
 *,*::after,*::before {

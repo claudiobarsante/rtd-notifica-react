@@ -12,7 +12,7 @@ export const Container = styled.div`
   height: 100vh;
 
   p {
-    color: var(--error);
+    color: var(--color-error);
     font-size: 1.2rem;
   }
 `;
@@ -89,17 +89,17 @@ export const Form = styled.div`
   width: 50%;
 
   p {
-    color: var(--error);
+    color: var(--color-error);
   }
 
   h1 {
-    color: var(--grey-dark);
+    color: var(--color-grey-dark);
     font-weight: 400;
     margin-bottom: 3rem;
   }
 
   h2 {
-    color: var(--grey-dark);
+    color: var(--color-grey-dark);
     font-weight: 400;
   }
 `;

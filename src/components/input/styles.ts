@@ -8,11 +8,11 @@ type ContainerProps = {
 export const Container = styled.div<ContainerProps>`
   width: 100%;
   height: 5.6rem;
-  background: var(--grey);
+  background: var(--color-grey);
   border-radius: 1rem;
-  border: 2px solid var(--grey);
+  border: 2px solid var(--color-grey);
   padding: 16px;
-  color: var(--grey-hard);
+  color: var(--color-grey-hard);
 
   display: flex;
   align-items: center;
@@ -21,14 +21,14 @@ export const Container = styled.div<ContainerProps>`
   ${props =>
     props.isFocused &&
     css`
-      border: 1px solid var(--primary);
+      border: 1px solid var(--color-primary);
       transition: border-color 2s, color 2s;
     `}
 
   ${props =>
     props.isErrored &&
     css`
-      border: 1px solid var(--error);
+      border: 1px solid var(--color-error);
       transition: border-color 2s, color 2s;
     `}  
     
@@ -37,17 +37,17 @@ export const Container = styled.div<ContainerProps>`
     background: transparent;
     border: 0;
     outline: 0;
-    color: var(--grey-hard);
+    color: var(--color-grey-hard);
     font-size: 1.8rem;
     margin: 0.2rem;
 
     &::placeholder {
-      color: var(--grey-hard);
+      color: var(--color-grey-hard);
     }
   }
 
   svg {
     margin-right: 1.6rem;
-    color: var(--primary);
+    color: var(--color-primary);
   }
 `;
