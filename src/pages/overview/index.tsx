@@ -34,13 +34,12 @@ const Overview = () => {
   // -- Hooks
   const {
     getTodasNotificacoesByOficioId,
+    resetError,
     isLoading,
     todasNotificacoes,
     error
   } = useNotificacao();
   const { currentUser, resetUserState } = useAuth();
-
-  console.log('current-user', currentUser);
 
   useEffect(() => {
     getTodasNotificacoesByOficioId(currentUser.oficioId);
@@ -116,9 +115,11 @@ const Overview = () => {
   );
 
   const handleCloseModal = useCallback(() => {
+    console.log('passei no modal');
     resetUserState();
+    resetError();
     return <Redirect to="/" />;
-  }, [resetUserState]);
+  }, [resetError, resetUserState]);
 
   const { code, message } = error;
 
