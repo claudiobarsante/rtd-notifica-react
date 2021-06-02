@@ -22,3 +22,18 @@ const iconCss = css`
 export const PinIcon = styled(IoPin)`
   ${iconCss}
 `;
+
+export const MenuContainer = styled.div`
+  display: flex;
+  position: fixed;
+  right: 0;
+  border: 1px solid orange;
+`;
+export const Menu = styled.ul`
+  list-style-type: none;
+  padding: 2rem;
+
+  li {
+    display: inline-block;
+  }
+`;

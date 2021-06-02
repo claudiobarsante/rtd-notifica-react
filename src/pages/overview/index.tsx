@@ -115,7 +115,6 @@ const Overview = () => {
   );
 
   const handleCloseModal = useCallback(() => {
-    console.log('passei no modal');
     resetUserState();
     resetError();
     return <Redirect to="/" />;

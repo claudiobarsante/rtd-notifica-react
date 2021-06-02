@@ -13,7 +13,7 @@ const ProtectedRoute = ({
 }: Props) => {
   const { currentUser } = useAuth();
   const isAuthenticated = currentUser.isAuthenticated;
-  console.log('current ', currentUser.isAuthenticated);
+
   const location = useLocation();
 
   return (

@@ -4,7 +4,7 @@ export const Container = styled.div`
   height: 100%;
   display: grid;
   grid-template-rows: 10% 85% 5%;
-  grid-template-columns: 40% 60%; //50fr means 50% of available space
+  grid-template-columns: 40% 60%;
   grid-template-areas: 'image search' 'image list' 'image pagination';
   border: 3px solid lightgrey;
   // justify-items: center;
@@ -16,17 +16,6 @@ export const Container = styled.div`
   //column-gap: 10rem;
   justify-content: center; //align the entire grid horizontaly
   align-content: center; //align the entire grid vertically
-
-  /* @media screen and (max-width: 1502px) {
-    display: grid;
-    grid-template-rows: 40fr 5fr 50fr 5fr;
-    grid-template-columns: 100fr;
-    grid-template-areas: 'image' 'search' 'list' 'pagination';
-  } */
-  /* @media screen and (max-width: 1415px) {
-    display: grid;
-    grid-template-columns: 40% 60%;
-  } */
 `;
 
 // export const Title = styled.div`
@@ -43,23 +32,12 @@ export const Left = styled.figure`
   grid-area: image;
 
   img {
-    height: 85vh;
-    width: 50vw;
+    //height: 90%;
+    width: 100%; //for the image to be reponse just set width to 100% of the available space
     object-fit: contain;
-    padding: 0 1rem;
-
-    @media screen and (max-width: 1415px) {
-      width: 45vw;
-    }
+    padding: 0 1.5rem;
   }
 
-  /* @media screen and (max-width: 1502px) {
-    img {
-      object-fit: contain;
-      height: auto;
-      width: auto;
-    }
-  } */
   border: 1px solid green;
 `;
 export const Right = styled.div`

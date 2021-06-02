@@ -1,23 +1,33 @@
-import React from 'react';
 import * as S from './styles';
 
-import { IoPin } from 'react-icons/io5';
-
 type Props = {
-	currentPage: string;
+  currentPage: string;
 };
 export default function Navbar({ currentPage: page }: Props) {
-	console.log('page ', page);
-	console.log('carreguei');
-	let title = '';
+  let title = '';
 
-	if (page.includes('overview')) {
-		title = 'Notificações';
-	}
-	return (
-		<S.Container>
-			<h1>{title}</h1>
-			<S.PinIcon />
-		</S.Container>
-	);
+  if (page.includes('overview')) {
+    title = 'Notificações';
+  }
+  return (
+    <S.Container>
+      <h1>{title}</h1>
+      <S.MenuContainer>
+        <S.Menu>
+          <li>
+            <button>Sobre</button>
+          </li>
+          <li>
+            <button>Gráficos</button>
+          </li>
+          <li>
+            <button>Distribuição</button>
+          </li>
+          <li>
+            <button>Logout</button>
+          </li>
+        </S.Menu>
+      </S.MenuContainer>
+    </S.Container>
+  );
 }
