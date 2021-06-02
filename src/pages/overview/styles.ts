@@ -4,7 +4,7 @@ export const Container = styled.div`
   height: 100%;
   display: grid;
   grid-template-rows: 10% 85% 5%;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas: 'image search' 'image list' 'image pagination';
   border: 3px solid lightgrey;
   // justify-items: center;
@@ -27,12 +27,11 @@ export const Left = styled.figure`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  //flex-grow: 1;
 
   grid-area: image;
 
   img {
-    //height: 90%;
+    height: 80vh;
     width: 100%; //for the image to be reponse just set width to 100% of the available space
     object-fit: contain;
     padding: 0 1.5rem;
@@ -49,7 +48,7 @@ export const Right = styled.div`
   border: 3px solid lightgrey;
 
   grid-area: list;
-  padding-top: 3rem;
+  padding: 1.5rem 2rem;
   width: 100%;
 `;
 export const TopRight = styled.section`
@@ -58,14 +57,15 @@ export const TopRight = styled.section`
   grid-area: search;
 
   border: 3px solid red;
-  // padding: 1rem;
 `;
 
 export const SearchAndFilterContainer = styled.div`
   display: flex;
-  justify-content: flex-start;
-  //align-items: center;
+  justify-content: center;
+  align-items: center;
   border: 1px solid var(--color-primary);
+  width: 100%;
+  padding: 0 1.6rem;
 `;
 
 export const Pagination = styled.footer`

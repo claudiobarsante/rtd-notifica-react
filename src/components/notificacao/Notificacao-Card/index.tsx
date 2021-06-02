@@ -7,7 +7,7 @@ type Props = {
   notificacaoDetails: Notificacao;
 };
 
-const NotificacaoItemComponent = ({ notificacaoDetails }: Props) => {
+const NotificacaoCard = ({ notificacaoDetails }: Props) => {
   const daysLimit = process.env.REACT_APP_DAYS_LIMIT_TO_COMPLETE_TASK;
   const days = daysLimit ? parseInt(daysLimit, 10) : 0;
 
@@ -48,12 +48,6 @@ are equal using a javascript function Object.is() or '===' for reference equalit
 4 - Medium to big size - your component contains a decent amount of UI elements to reason props equality check 
 */
 
-export const NotificacaoItem = memo(
-  NotificacaoItemComponent,
-  (prevProps, nextProps) => {
-    return Object.is(
-      prevProps.notificacaoDetails,
-      nextProps.notificacaoDetails
-    );
-  }
-);
+export const NotificacaoItem = memo(NotificacaoCard, (prevProps, nextProps) => {
+  return Object.is(prevProps.notificacaoDetails, nextProps.notificacaoDetails);
+});

@@ -6,15 +6,12 @@ export const Container = styled.div`
   align-items: center;
 
   height: 5.6rem;
-  // width: 40rem;
-  width: min(90%, 70.5rem);
+  width: 100%;
 
   background: var(--color-grey);
   border-radius: 1rem;
   border: 2px solid var(--color-primary);
   color: var(--color-grey-hard);
-  // margin-left: 22%;
-  // padding: 16px;
 
   input {
     background: transparent;

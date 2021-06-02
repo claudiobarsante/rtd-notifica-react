@@ -13,7 +13,8 @@ export const NotificacaoContainer = styled.div`
   position: relative;
 
   height: 15rem;
-  width: 40vw;
+  width: 100%;
+
   // -- shadow
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -78,8 +79,8 @@ export const DiasEmAtrasoContainer = styled.div`
 export const DiasEmAtrasoCalendar = styled(
   CalendarClock
 )<DiasEmAtrasoCalendarProps>`
-  height: 2.5rem;
-  widht: 2.5rem;
+  height: 2.9rem;
+  widht: 2.9rem;
 
   ${props =>
     props.isLate &&
