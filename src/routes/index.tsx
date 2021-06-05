@@ -7,6 +7,7 @@ import ProtectedRoute from './ProtectedRoute';
 
 const SignIn = lazy(() => import('../pages/SignIn/index'));
 const Overview = lazy(() => import('../pages/Overview/index'));
+const MapDistribution = lazy(() => import('../pages/Map-Distribution'));
 
 const index = () => {
   return (
@@ -17,6 +18,11 @@ const index = () => {
             <Route path="/" exact component={SignIn} />
             <Route path="/teste" component={Teste} />
             <ProtectedRoute path="/overview" component={Overview} isProtected />
+            <ProtectedRoute
+              path="/distribution"
+              component={MapDistribution}
+              isProtected
+            />
           </Suspense>
         </ErrorBoundary>
       </Switch>

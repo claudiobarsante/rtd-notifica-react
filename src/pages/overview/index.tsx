@@ -17,6 +17,7 @@ import * as S from './styles';
 import multiImg from 'assets/multi-transp.png';
 // -- Logic
 import { Pagination, Search, PaginationDirection, Filters } from './logic';
+// -- Types
 import { ResponseCode } from 'types/response';
 
 const FIRST_PAGE = 1;

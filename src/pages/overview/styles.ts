@@ -6,7 +6,7 @@ export const Container = styled.div`
   grid-template-rows: 10% 85% 5%;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: 'image search' 'image list' 'image pagination';
-  border: 3px solid lightgrey;
+  //border: 3px solid lightgrey;
   // justify-items: center;
   //align-items: center;
   //justify-items - aligns items inside the grid horizontaly
@@ -18,10 +18,6 @@ export const Container = styled.div`
   align-content: center; //align the entire grid vertically
 `;
 
-// export const Title = styled.div`
-// 	height: 5rem;
-// 	grid-area: title; //to place the element on a specific area, this is the same as grid-column:1/ span 2
-// `;
 export const Left = styled.figure`
   display: flex;
   flex-direction: column;
@@ -37,7 +33,7 @@ export const Left = styled.figure`
     padding: 0 1.5rem;
   }
 
-  border: 1px solid green;
+  // border: 1px solid green;
 `;
 export const Right = styled.div`
   display: flex;
@@ -45,7 +41,7 @@ export const Right = styled.div`
   justify-content: center;
   align-items: center;
 
-  border: 3px solid lightgrey;
+  // border: 3px solid lightgrey;
 
   grid-area: list;
   padding: 1.5rem 2rem;
@@ -56,22 +52,24 @@ export const TopRight = styled.section`
   align-items: center;
   grid-area: search;
 
-  border: 3px solid red;
+  //border: 3px solid red;
 `;
 
 export const SearchAndFilterContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--color-primary);
+  // border: 1px solid var(--color-primary);
   width: 100%;
+  margin-top: 1.5rem;
   padding: 0 1.6rem;
 `;
 
 export const Pagination = styled.footer`
-  grid-area: pagination;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  grid-area: pagination;
 `;
