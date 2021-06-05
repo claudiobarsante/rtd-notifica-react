@@ -25,12 +25,17 @@ export const Item = styled.li<MenuItemProps>`
       `}
   }
 
+  span {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
   svg {
-    width: 2.8rem;
-    height: 2.8rem;
     color: var(--color-accent);
     flex-shrink: 0;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
+
+    height: 2.8rem;
+    width: 2.8rem;
   }
 `;
 

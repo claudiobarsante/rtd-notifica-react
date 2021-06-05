@@ -10,7 +10,7 @@ export const Container = styled.div`
 
   background: var(--color-grey);
   border-radius: 1rem;
-  border: 2px solid var(--color-primary);
+  border: 2px solid var(--color-accent);
   color: var(--color-grey-hard);
 
   input {
@@ -29,8 +29,9 @@ export const Container = styled.div`
 `;
 
 export const SearchIcon = styled(AiOutlineFileSearch)`
-  color: var(--color-primary);
+  color: var(--color-accent);
   margin-right: 1.6rem;
+  margin-left: 1rem;
 
   height: 2.5rem;
   width: 2.5rem;
