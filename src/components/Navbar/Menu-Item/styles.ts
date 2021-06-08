@@ -29,6 +29,7 @@ export const Item = styled.li<MenuItemProps>`
     display: inline-block;
     margin-bottom: 1.5rem;
   }
+
   svg {
     color: var(--color-accent);
     flex-shrink: 0;

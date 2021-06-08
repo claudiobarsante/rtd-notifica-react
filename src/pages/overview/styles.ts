@@ -19,10 +19,8 @@ export const Container = styled.div`
 `;
 
 export const Left = styled.figure`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-items: center; // -- aligns items inside the grid horizontaly
+  align-items: center; // -- aligns items inside the grid vertically
 
   grid-area: image;
 
@@ -36,20 +34,15 @@ export const Left = styled.figure`
   // border: 1px solid green;
 `;
 export const Right = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-items: center;
   align-items: center;
-
-  // border: 3px solid lightgrey;
 
   grid-area: list;
   padding: 1.5rem 2rem;
   width: 100%;
 `;
 export const TopRight = styled.section`
-  display: flex;
-  align-items: center;
+  justify-items: center;
   grid-area: search;
 
   //border: 3px solid red;
@@ -59,16 +52,15 @@ export const SearchAndFilterContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  // border: 1px solid var(--color-primary);
+
+  //border: 2px solid green;
   width: 100%;
   margin-top: 1.5rem;
   padding: 0 1.6rem;
 `;
 
 export const Pagination = styled.footer`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-items: center;
   align-items: center;
 
   grid-area: pagination;
