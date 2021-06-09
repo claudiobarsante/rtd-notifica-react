@@ -21,14 +21,14 @@ export type Notificacao = {
 export type NotificacoesState = {
   todasNotificacoes: Notificacao[];
   error: ResponseError;
-  //filteredNotificacoes: Notificacao[];
+  filteredNotificacoes: Notificacao[];
   isLoading: boolean;
   lastUpdate: Date;
 };
 
 const INITIAL_STATE: NotificacoesState = {
   todasNotificacoes: [],
-  //filteredNotificacoes: [],
+  filteredNotificacoes: [],
   error: { code: 0, message: '' },
   isLoading: false,
   lastUpdate: new Date()
@@ -37,8 +37,10 @@ const INITIAL_STATE: NotificacoesState = {
 export type NotificacoesContextData = {
   error: ResponseError;
   isLoading: boolean;
-  todasNotificacoes: Notificacao[];
+  filteredNotificacoes: Notificacao[];
   getTodasNotificacoesByOficioId: (oficioId: number) => void;
+  updateFilteredNotificacoes: (notificacoes: Notificacao[]) => void;
+  resetFilteredNotificacoes: () => void;
   resetError: () => void;
 };
 
@@ -59,7 +61,11 @@ const NotificacoesProvider = ({ children }: NotificacoesProviderProps) => {
         setData(data => ({ ...data, isLoading: true }));
         const response = await getAllNotificacoesService(oficioId);
         const notificacoes: Notificacao[] = JSON.parse(response.data);
-        setData(data => ({ ...data, todasNotificacoes: notificacoes }));
+        setData(data => ({
+          ...data,
+          todasNotificacoes: notificacoes,
+          filteredNotificacoes: notificacoes
+        }));
       } catch (error) {
         console.log('hook', error);
         const { code, message } = Error.formatErrorMessage(error.toString());
@@ -73,14 +79,27 @@ const NotificacoesProvider = ({ children }: NotificacoesProviderProps) => {
   const resetError = useCallback(() => {
     setData(data => ({ ...data, error: { code: 0, message: '' } }));
   }, []);
+
+  const updateFilteredNotificacoes = useCallback((filtered: Notificacao[]) => {
+    setData(data => ({ ...data, filteredNotificacoes: filtered }));
+  }, []);
+
+  const resetFilteredNotificacoes = useCallback(() => {
+    setData(data => ({
+      ...data,
+      filteredNotificacoes: data.todasNotificacoes
+    }));
+  }, []);
   return (
     <NotificacoesContext.Provider
       value={{
         isLoading: data.isLoading,
         error: data.error,
-        todasNotificacoes: data.todasNotificacoes,
+        filteredNotificacoes: data.filteredNotificacoes,
         getTodasNotificacoesByOficioId,
-        resetError
+        resetError,
+        updateFilteredNotificacoes,
+        resetFilteredNotificacoes
       }}
     >
       {children}

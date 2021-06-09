@@ -28,16 +28,16 @@ const Overview = () => {
   const [totalPages, setTotalPages] = useState<number>(0);
   const [recordsPerPage] = useState<number>(4);
   const [page, setPage] = useState<Notificacao[]>([]);
-  const [filteredNotificacoes, setFilteredNotificacoes] = useState<
-    Notificacao[]
-  >({} as Notificacao[]);
+
   const [inputText, setInputText] = useState('');
   // -- Hooks
   const {
     getTodasNotificacoesByOficioId,
     resetError,
     isLoading,
-    todasNotificacoes,
+    filteredNotificacoes,
+    updateFilteredNotificacoes,
+    resetFilteredNotificacoes,
     error
   } = useNotificacao();
   const { currentUser, resetUserState } = useAuth();
@@ -45,10 +45,6 @@ const Overview = () => {
   useEffect(() => {
     getTodasNotificacoesByOficioId(currentUser.oficioId);
   }, [currentUser.oficioId, getTodasNotificacoesByOficioId]);
-
-  useEffect(() => {
-    setFilteredNotificacoes(todasNotificacoes);
-  }, [todasNotificacoes]);
 
   const loadRecordsToPage = useCallback(
     (currentPage: number) => {
@@ -95,24 +91,24 @@ const Overview = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value;
     setInputText(text);
-    const filtered = Search.filterNotificacoes(text, todasNotificacoes);
-    setFilteredNotificacoes(filtered);
+    const filtered = Search.filterNotificacoes(text, filteredNotificacoes);
+    updateFilteredNotificacoes(filtered);
   };
 
   const handleClear = useCallback(() => {
     setInputText('');
-    setFilteredNotificacoes(todasNotificacoes);
-  }, [todasNotificacoes]);
+    resetFilteredNotificacoes();
+  }, [resetFilteredNotificacoes]);
 
   const handleFilter = useCallback(
     (filter: Filters) => {
       const filtered = Search.filterNotificacoesByDiasEmAtraso(
-        todasNotificacoes,
+        filteredNotificacoes,
         filter
       );
-      setFilteredNotificacoes(filtered);
+      updateFilteredNotificacoes(filtered);
     },
-    [todasNotificacoes]
+    [filteredNotificacoes, updateFilteredNotificacoes]
   );
 
   const handleCloseModal = useCallback(() => {

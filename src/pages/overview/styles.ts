@@ -4,7 +4,7 @@ export const Container = styled.div`
   height: 100%;
   display: grid;
   grid-template-rows: 10% 85% 5%;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 45% 55%;
   grid-template-areas: 'image search' 'image list' 'image pagination';
   //border: 3px solid lightgrey;
   // justify-items: center;
@@ -31,7 +31,7 @@ export const Left = styled.figure`
     padding: 0 1.5rem;
   }
 
-  // border: 1px solid green;
+  border: 1px solid green;
 `;
 export const Right = styled.div`
   justify-items: center;
