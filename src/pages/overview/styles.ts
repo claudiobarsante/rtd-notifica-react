@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  height: 100%;
+export const Container = styled.main`
+  height: calc(100vh - 12rem); //10rem is the height of the navbar;
   display: grid;
   grid-template-rows: 10% 85% 5%;
   grid-template-columns: 45% 55%;
@@ -25,7 +25,7 @@ export const Left = styled.figure`
   grid-area: image;
 
   img {
-    height: 80vh;
+    height: calc(100vh - 12rem);
     width: 100%; //for the image to be reponse just set width to 100% of the available space
     object-fit: contain;
     padding: 0 1.5rem;
