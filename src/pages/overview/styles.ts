@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-  height: calc(100vh - 12rem); //10rem is the height of the navbar;
+  height: calc(100vh - 12rem); // aprox 12rem is the height of the navbar;
   display: grid;
   grid-template-rows: 10% 85% 5%;
   grid-template-columns: 45% 55%;
@@ -18,7 +18,7 @@ export const Container = styled.main`
   align-content: center; //align the entire grid vertically
 `;
 
-export const Left = styled.figure`
+export const Left = styled.picture`
   justify-items: center; // -- aligns items inside the grid horizontaly
   align-items: center; // -- aligns items inside the grid vertically
 
