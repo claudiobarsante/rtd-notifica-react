@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import Helmet from 'react-helmet';
 // -- Components
 import ActivityIndicator from 'components/Activity-Indicator';
 import ClearButton from 'components/notificacao/Clear-Button';
@@ -127,6 +128,7 @@ const Overview = () => {
 
   return (
     <S.Container>
+      <Helmet title="RTDNOTIFICA | Notificações" />
       <S.Left>
         <img
           src={multiImg}
