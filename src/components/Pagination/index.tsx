@@ -1,12 +1,12 @@
 import * as S from './styles';
 
-import { Direction } from 'pages/Overview/logic';
+import { Direction, Directions } from 'pages/Overview/logic';
 import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
 import PaginationButton from './Button';
 
 type Props = {
   totalPages: number;
-  onClickDirection: (direction: Direction.PREVIOUS | Direction.NEXT) => void;
+  onClickDirection: (direction: Directions) => void;
   currentPage: number;
 };
 

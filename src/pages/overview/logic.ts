@@ -6,9 +6,7 @@ export enum Direction {
   NEXT = 'next'
 }
 
-// export type PaginationDirection = {
-//   pageToGo: Direction.PREVIOUS | Direction.NEXT;
-// };
+export type Directions = Direction.PREVIOUS | Direction.NEXT;
 
 export enum Filter {
   ALL = 'all',
@@ -16,9 +14,7 @@ export enum Filter {
   AFTER = 'after'
 }
 
-export type Filters = {
-  selectedFilter: Filter.ALL | Filter.BEFORE | Filter.AFTER;
-};
+export type Filters = Filter.ALL | Filter.BEFORE | Filter.AFTER;
 
 export class Pagination {
   static getTotalNumberOfPages(length: number, recordsPerPage: number) {
@@ -47,7 +43,7 @@ export class Pagination {
 
   static selectPage(
     currentPage: number,
-    direction: Direction.PREVIOUS | Direction.NEXT,
+    direction: Directions,
     totalPages: number
   ) {
     let newPage = 0;
@@ -95,13 +91,13 @@ export class Search {
 
     let filtered: Notificacao[] = [];
 
-    if (filter.selectedFilter === Filter.ALL) {
+    if (filter === Filter.ALL) {
       filtered = [...todasNotificacoes];
-    } else if (filter.selectedFilter === Filter.BEFORE) {
+    } else if (filter === Filter.BEFORE) {
       filtered = todasNotificacoes.filter(
         (notificacao) => notificacao.diasEmAtraso <= days
       );
-    } else if (filter.selectedFilter === Filter.AFTER) {
+    } else if (filter === Filter.AFTER) {
       filtered = todasNotificacoes.filter(
         (notificacao) => notificacao.diasEmAtraso > days
       );
