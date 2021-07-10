@@ -23,4 +23,4 @@ const MapDistribution = () => {
   );
 };
 
-export default React.memo(MapDistribution);
+export default MapDistribution;

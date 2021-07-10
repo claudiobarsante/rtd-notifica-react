@@ -7,7 +7,7 @@ import { toast, Slide } from 'react-toastify';
 //Utils
 
 import { Error } from 'erros/Error';
-import { apiClient } from 'api/client';
+import apiClient from 'api/client';
 
 export type AuthState = {
   user: CurrentUser;
@@ -89,6 +89,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
       localStorage.setItem(TOKEN_KEY, access_token);
       localStorage.setItem(USER_KEY, JSON.stringify(currentUser));
+
       apiClient.defaults.headers['Authorization'] = `Bearer ${access_token}`;
 
       setData(data => ({ ...data, user: currentUser, token: access_token }));
