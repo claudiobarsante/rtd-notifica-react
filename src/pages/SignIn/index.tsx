@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ErrorMessage } from '@hookform/error-message';
 import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai';
-import Helmet from 'react-helmet';
+
 //Types
 import { Credentials } from 'hooks/use-auth';
 
@@ -50,7 +50,6 @@ const SignIn = () => {
 
   return (
     <S.Container>
-      <Helmet title="RTDNOTIFICA | Log in" />
       <S.SignIn>
         <S.Picture>
           <img src={splashImg} alt="Logo da aplicação RtdNotifica App" />

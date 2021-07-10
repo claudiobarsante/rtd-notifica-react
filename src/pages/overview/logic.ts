@@ -2,100 +2,114 @@ import { Notificacao } from 'hooks/use-notificacao';
 import filter from 'lodash/filter';
 
 export enum Direction {
-	PREVIOUS = 'previous',
-	NEXT = 'next',
+  PREVIOUS = 'previous',
+  NEXT = 'next'
 }
 
 export type PaginationDirection = {
-	pageToGo: Direction.PREVIOUS | Direction.NEXT;
+  pageToGo: Direction.PREVIOUS | Direction.NEXT;
 };
 
 export enum Filter {
-	ALL = 'all',
-	BEFORE = 'before',
-	AFTER = 'after',
+  ALL = 'all',
+  BEFORE = 'before',
+  AFTER = 'after'
 }
 
 export type Filters = {
-	selected: Filter.ALL | Filter.BEFORE | Filter.AFTER;
+  selected: Filter.ALL | Filter.BEFORE | Filter.AFTER;
 };
 
 export class Pagination {
-	static getTotalNumberOfPages(length: number, recordsPerPage: number) {
-		const countPages = Math.ceil(length / recordsPerPage);
-		return countPages;
-	}
+  static getTotalNumberOfPages(length: number, recordsPerPage: number) {
+    const countPages = Math.ceil(length / recordsPerPage);
+    return countPages;
+  }
 
-	static getRecordsPerPage(
-		allRecords: Notificacao[],
-		currentPage: number,
-		recordsPerPage: number
-	): Notificacao[] {
-		const startIdx = (currentPage - 1) * recordsPerPage;
+  static getRecordsPerPage(
+    allRecords: Notificacao[],
+    currentPage: number,
+    recordsPerPage: number
+  ): Notificacao[] {
+    const startIdx = (currentPage - 1) * recordsPerPage;
 
-		let endIdx = startIdx + recordsPerPage;
+    let endIdx = startIdx + recordsPerPage;
 
-		let records = [];
-		if (endIdx >= allRecords.length - 1) {
-			records = allRecords.slice(startIdx);
-		} else {
-			records = allRecords.slice(startIdx, endIdx);
-		}
+    let records = [];
+    if (endIdx >= allRecords.length - 1) {
+      records = allRecords.slice(startIdx);
+    } else {
+      records = allRecords.slice(startIdx, endIdx);
+    }
 
-		return records;
-	}
+    return records;
+  }
 
-	static selectPage(currentPage: number, direction: PaginationDirection, totalPages: number) {
-		let newPage = 0;
-		if (direction.pageToGo === Direction.PREVIOUS) {
-			if (currentPage === 1) return currentPage;
-			newPage = currentPage - 1;
-		}
+  static selectPage(
+    currentPage: number,
+    direction: PaginationDirection,
+    totalPages: number
+  ) {
+    let newPage = 0;
+    if (direction.pageToGo === Direction.PREVIOUS) {
+      if (currentPage === 1) return currentPage;
+      newPage = currentPage - 1;
+    }
 
-		if (direction.pageToGo === Direction.NEXT) {
-			if (currentPage === totalPages) return currentPage;
-			newPage = currentPage + 1;
-		}
+    if (direction.pageToGo === Direction.NEXT) {
+      if (currentPage === totalPages) return currentPage;
+      newPage = currentPage + 1;
+    }
 
-		return newPage;
-	}
+    return newPage;
+  }
 }
 
 export class Search {
-	static filterNotificacoes(text: string, todasNotificacoes: Notificacao[]): Notificacao[] {
-		const formattedQuery = text.toLowerCase();
+  static filterNotificacoes(
+    text: string,
+    todasNotificacoes: Notificacao[]
+  ): Notificacao[] {
+    const formattedQuery = text.toLowerCase();
 
-		const filtered = filter(todasNotificacoes, notificacao => {
-			if (
-				notificacao.protocolo.includes(formattedQuery) ||
-				notificacao.nome.toLowerCase().includes(formattedQuery) ||
-				notificacao.endereco.toLowerCase().includes(formattedQuery)
-			) {
-				return true;
-			}
-			return false;
-		});
+    const filtered = filter(todasNotificacoes, (notificacao) => {
+      if (
+        notificacao.protocolo.includes(formattedQuery) ||
+        notificacao.nome.toLowerCase().includes(formattedQuery) ||
+        notificacao.endereco.toLowerCase().includes(formattedQuery)
+      ) {
+        return true;
+      }
+      return false;
+    });
 
-		return filtered;
-	}
+    return filtered;
+  }
 
-	static filterNotificacoesByDiasEmAtraso(
-		todasNotificacoes: Notificacao[],
-		filter: Filters
-	): Notificacao[] {
-		const daysLimit = process.env.REACT_APP_DAYS_LIMIT_TO_COMPLETE_TASK;
-		const days = daysLimit ? parseInt(daysLimit, 10) : 0;
+  static filterNotificacoesByDiasEmAtraso(
+    todasNotificacoes: Notificacao[],
+    filter: Filters
+  ): Notificacao[] {
+    const daysLimit = process.env.REACT_APP_DAYS_LIMIT_TO_COMPLETE_TASK;
+    const days = daysLimit ? parseInt(daysLimit, 10) : 0;
 
-		let filtered: Notificacao[] = [];
+    let filtered: Notificacao[] = [];
 
-		if (filter.selected === Filter.ALL) {
-			filtered = [...todasNotificacoes];
-		} else if (filter.selected === Filter.BEFORE) {
-			filtered = todasNotificacoes.filter(notificacao => notificacao.diasEmAtraso <= days);
-		} else if (filter.selected === Filter.AFTER) {
-			filtered = todasNotificacoes.filter(notificacao => notificacao.diasEmAtraso > days);
-		}
+    console.log('todasNotificacoes', todasNotificacoes.length);
+    if (filter.selected === Filter.ALL) {
+      filtered = [...todasNotificacoes];
+    } else if (filter.selected === Filter.BEFORE) {
+      filtered = todasNotificacoes.filter(
+        (notificacao) => notificacao.diasEmAtraso <= days
+      );
+    } else if (filter.selected === Filter.AFTER) {
+      filtered = todasNotificacoes.filter(
+        (notificacao) => notificacao.diasEmAtraso > days
+      );
+    }
 
-		return filtered;
-	}
+    console.log('filtered inside logic', filtered);
+
+    return filtered;
+  }
 }

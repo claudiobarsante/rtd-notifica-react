@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import Helmet from 'react-helmet';
+
 // -- Components
 import ActivityIndicator from 'components/Activity-Indicator';
 import ClearButton from 'components/notificacao/Clear-Button';
@@ -39,6 +39,7 @@ const Overview = () => {
     filteredNotificacoes,
     updateFilteredNotificacoes,
     resetFilteredNotificacoes,
+    todasNotificacoes,
     error
   } = useNotificacao();
   const { currentUser, resetUserState } = useAuth();
@@ -104,9 +105,10 @@ const Overview = () => {
   const handleFilter = useCallback(
     (filter: Filters) => {
       const filtered = Search.filterNotificacoesByDiasEmAtraso(
-        filteredNotificacoes,
+        todasNotificacoes,
         filter
       );
+
       updateFilteredNotificacoes(filtered);
     },
     [filteredNotificacoes, updateFilteredNotificacoes]
@@ -128,7 +130,6 @@ const Overview = () => {
 
   return (
     <S.Container>
-      <Helmet title="RTDNOTIFICA | Notificações" />
       <S.Left>
         <img
           src={multiImg}
@@ -145,7 +146,7 @@ const Overview = () => {
       <S.Right>
         {isLoading && <ActivityIndicator isLoading={isLoading} />}
         {page &&
-          page.map(notificacao => (
+          page.map((notificacao) => (
             <NotificacaoItem
               key={notificacao.notificadoId}
               notificacaoDetails={notificacao}

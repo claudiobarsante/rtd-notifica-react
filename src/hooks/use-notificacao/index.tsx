@@ -42,6 +42,7 @@ export type NotificacoesContextData = {
   updateFilteredNotificacoes: (notificacoes: Notificacao[]) => void;
   resetFilteredNotificacoes: () => void;
   resetError: () => void;
+  todasNotificacoes: Notificacao[];
 };
 
 export const NotificacoesContext = createContext<NotificacoesContextData>(
@@ -58,10 +59,10 @@ const NotificacoesProvider = ({ children }: NotificacoesProviderProps) => {
   const getTodasNotificacoesByOficioId = useCallback(
     async (oficioId: number) => {
       try {
-        setData(data => ({ ...data, isLoading: true }));
+        setData((data) => ({ ...data, isLoading: true }));
         const response = await getAllNotificacoesService(oficioId);
         const notificacoes: Notificacao[] = JSON.parse(response.data);
-        setData(data => ({
+        setData((data) => ({
           ...data,
           todasNotificacoes: notificacoes,
           filteredNotificacoes: notificacoes
@@ -69,23 +70,23 @@ const NotificacoesProvider = ({ children }: NotificacoesProviderProps) => {
       } catch (error) {
         console.log('hook', error);
         const { code, message } = Error.formatErrorMessage(error.toString());
-        setData(data => ({ ...data, error: { code, message } }));
+        setData((data) => ({ ...data, error: { code, message } }));
       }
-      setData(data => ({ ...data, isLoading: false }));
+      setData((data) => ({ ...data, isLoading: false }));
     },
     []
   );
 
   const resetError = useCallback(() => {
-    setData(data => ({ ...data, error: { code: 0, message: '' } }));
+    setData((data) => ({ ...data, error: { code: 0, message: '' } }));
   }, []);
 
   const updateFilteredNotificacoes = useCallback((filtered: Notificacao[]) => {
-    setData(data => ({ ...data, filteredNotificacoes: filtered }));
+    setData((data) => ({ ...data, filteredNotificacoes: filtered }));
   }, []);
 
   const resetFilteredNotificacoes = useCallback(() => {
-    setData(data => ({
+    setData((data) => ({
       ...data,
       filteredNotificacoes: data.todasNotificacoes
     }));
@@ -96,6 +97,7 @@ const NotificacoesProvider = ({ children }: NotificacoesProviderProps) => {
         isLoading: data.isLoading,
         error: data.error,
         filteredNotificacoes: data.filteredNotificacoes,
+        todasNotificacoes: data.todasNotificacoes,
         getTodasNotificacoesByOficioId,
         resetError,
         updateFilteredNotificacoes,
