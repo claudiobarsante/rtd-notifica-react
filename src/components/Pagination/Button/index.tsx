@@ -1,15 +1,15 @@
 import * as S from './styles';
 import ReactTooltip from 'react-tooltip';
 import { IconBaseProps } from 'react-icons';
-import { PaginationDirection, Direction } from 'pages/Overview/logic';
+import { Direction } from 'pages/Overview/logic';
 
 type Props = {
   icon?: React.ComponentType<IconBaseProps>;
   name: string;
   tooltip: string;
   tooltipPlacement: 'left' | 'right';
-  direction: Direction;
-  selectedDirection: (direction: PaginationDirection) => void;
+  direction: Direction.PREVIOUS | Direction.NEXT;
+  selectedDirection: (direction: Direction.PREVIOUS | Direction.NEXT) => void;
 };
 const PaginationButton = ({
   icon: Icon,
@@ -24,7 +24,7 @@ const PaginationButton = ({
       <S.Button
         data-tip
         data-for={name}
-        onClick={() => selectedDirection({ pageToGo: direction })}
+        onClick={() => selectedDirection(direction)}
       >
         {Icon && <Icon />}
       </S.Button>

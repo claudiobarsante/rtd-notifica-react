@@ -17,7 +17,7 @@ import * as S from './styles';
 // -- Images
 import multiImg from 'assets/multi-transp.png';
 // -- Logic
-import { Pagination, Search, PaginationDirection, Filters } from './logic';
+import { Pagination, Search, Filters, Direction } from './logic';
 // -- Types
 import { ResponseCode } from 'types/response';
 
@@ -75,7 +75,7 @@ const Overview = () => {
   ]);
 
   const handleSelectPage = useCallback(
-    (direction: PaginationDirection) => {
+    (direction: Direction.PREVIOUS | Direction.NEXT) => {
       let newPage = Pagination.selectPage(
         currentPage,
         direction,
@@ -111,7 +111,7 @@ const Overview = () => {
 
       updateFilteredNotificacoes(filtered);
     },
-    [filteredNotificacoes, updateFilteredNotificacoes]
+    [todasNotificacoes, updateFilteredNotificacoes]
   );
 
   const handleCloseModal = useCallback(() => {

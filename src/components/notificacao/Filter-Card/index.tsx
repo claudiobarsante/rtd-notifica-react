@@ -17,21 +17,23 @@ const FilterCard = ({ isVisible, hideCard, filterNotificacoes }: Props) => {
       <S.Options>
         <li>
           <S.OptionButton
-            onClick={() => filterNotificacoes({ selected: Filter.ALL })}
+            onClick={() => filterNotificacoes({ selectedFilter: Filter.ALL })}
           >
             Todas notificações
           </S.OptionButton>
         </li>
         <li>
           <S.OptionButton
-            onClick={() => filterNotificacoes({ selected: Filter.BEFORE })}
+            onClick={() =>
+              filterNotificacoes({ selectedFilter: Filter.BEFORE })
+            }
           >
             Em diligência com menos de 15 dias
           </S.OptionButton>
         </li>
         <li>
           <S.OptionButton
-            onClick={() => filterNotificacoes({ selected: Filter.AFTER })}
+            onClick={() => filterNotificacoes({ selectedFilter: Filter.AFTER })}
           >
             Em diligência com mais de 15 dias
           </S.OptionButton>

@@ -6,9 +6,9 @@ export enum Direction {
   NEXT = 'next'
 }
 
-export type PaginationDirection = {
-  pageToGo: Direction.PREVIOUS | Direction.NEXT;
-};
+// export type PaginationDirection = {
+//   pageToGo: Direction.PREVIOUS | Direction.NEXT;
+// };
 
 export enum Filter {
   ALL = 'all',
@@ -17,7 +17,7 @@ export enum Filter {
 }
 
 export type Filters = {
-  selected: Filter.ALL | Filter.BEFORE | Filter.AFTER;
+  selectedFilter: Filter.ALL | Filter.BEFORE | Filter.AFTER;
 };
 
 export class Pagination {
@@ -47,16 +47,16 @@ export class Pagination {
 
   static selectPage(
     currentPage: number,
-    direction: PaginationDirection,
+    direction: Direction.PREVIOUS | Direction.NEXT,
     totalPages: number
   ) {
     let newPage = 0;
-    if (direction.pageToGo === Direction.PREVIOUS) {
+    if (direction === Direction.PREVIOUS) {
       if (currentPage === 1) return currentPage;
       newPage = currentPage - 1;
     }
 
-    if (direction.pageToGo === Direction.NEXT) {
+    if (direction === Direction.NEXT) {
       if (currentPage === totalPages) return currentPage;
       newPage = currentPage + 1;
     }
@@ -95,20 +95,17 @@ export class Search {
 
     let filtered: Notificacao[] = [];
 
-    console.log('todasNotificacoes', todasNotificacoes.length);
-    if (filter.selected === Filter.ALL) {
+    if (filter.selectedFilter === Filter.ALL) {
       filtered = [...todasNotificacoes];
-    } else if (filter.selected === Filter.BEFORE) {
+    } else if (filter.selectedFilter === Filter.BEFORE) {
       filtered = todasNotificacoes.filter(
         (notificacao) => notificacao.diasEmAtraso <= days
       );
-    } else if (filter.selected === Filter.AFTER) {
+    } else if (filter.selectedFilter === Filter.AFTER) {
       filtered = todasNotificacoes.filter(
         (notificacao) => notificacao.diasEmAtraso > days
       );
     }
-
-    console.log('filtered inside logic', filtered);
 
     return filtered;
   }
