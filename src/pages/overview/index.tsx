@@ -2,22 +2,22 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
 // -- Components
-import ActivityIndicator from 'components/Activity-Indicator';
-import ClearButton from 'components/notificacao/Clear-Button';
-import FilterButton from 'components/notificacao/Filter-Button';
-import { NotificacaoItem } from 'components/notificacao/Notificacao-Card';
+import ActivityIndicator from 'components/ActivityIndicator';
+import ClearButton from 'components/notificacao/ClearButton';
+import FilterButton from 'components/notificacao/FilterButton';
+import { NotificacaoItem } from 'components/notificacao/NotificacaoCard';
 import NotificacaoSearch from 'components/notificacao/Search';
 import PaginationActions from 'components/Pagination';
 import SessionExpired from 'components/Modal/Session-Expired';
 // -- Hooks
-import { useAuth } from 'hooks/use-auth';
-import { Notificacao, useNotificacao } from 'hooks/use-notificacao';
+import { useAuth } from 'hooks/useAuth';
+import { Notificacao, useNotificacao } from 'hooks/use-Notificacao';
 // -- Styles
 import * as S from './styles';
 // -- Images
 import multiImg from 'assets/multi-transp.png';
 // -- Logic
-import { Pagination, Search, Filters, Direction } from './logic';
+import { Pagination, Search, Filters, Directions } from './logic';
 // -- Types
 import { ResponseCode } from 'types/response';
 
@@ -75,7 +75,7 @@ const Overview = () => {
   ]);
 
   const handleSelectPage = useCallback(
-    (direction: Direction.PREVIOUS | Direction.NEXT) => {
+    (direction: Directions) => {
       let newPage = Pagination.selectPage(
         currentPage,
         direction,

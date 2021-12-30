@@ -1,6 +1,6 @@
 import * as S from './styles';
 
-import { Direction, Directions } from 'pages/Overview/logic';
+import { Directions } from 'pages/Overview/logic';
 import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
 import PaginationButton from './Button';
 
@@ -23,7 +23,7 @@ const PaginationActions = ({
         tooltipPlacement="left"
         tooltip="Ir para página anterior"
         selectedDirection={onClickDirection}
-        direction={Direction.PREVIOUS}
+        direction="Previous"
       />
 
       <span>{`${currentPage} de ${totalPages}`}</span>
@@ -34,7 +34,7 @@ const PaginationActions = ({
         tooltipPlacement="right"
         tooltip="Ir para próxima página"
         selectedDirection={onClickDirection}
-        direction={Direction.NEXT}
+        direction="Next"
       />
     </S.Container>
   );

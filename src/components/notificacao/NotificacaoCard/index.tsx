@@ -1,5 +1,5 @@
 import * as S from './styles';
-import { Notificacao } from 'hooks/use-notificacao';
+import { Notificacao } from 'hooks/use-Notificacao';
 import { Utils } from 'helpers/Utils';
 import { memo } from 'react';
 

@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { TOKEN_KEY } from 'hooks/use-auth';
+import { TOKEN_KEY } from 'hooks/useAuth';
 
 const apiClient = axios.create({
   baseURL: `${process.env.REACT_APP_BASE_URL}`

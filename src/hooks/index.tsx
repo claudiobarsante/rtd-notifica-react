@@ -1,6 +1,6 @@
-import { AuthProvider } from 'hooks/use-auth';
-import { NotificacoesProvider } from 'hooks/use-notificacao';
-import { ErrorProvider } from 'hooks/use-Error';
+import { AuthProvider } from 'hooks/useAuth';
+import { NotificacoesProvider } from 'hooks/use-Notificacao';
+import { ErrorProvider } from 'hooks/useError';
 
 type Props = {
   children: React.ReactNode;

@@ -7,7 +7,7 @@ import ProtectedRoute from './ProtectedRoute';
 
 const SignIn = lazy(() => import('../pages/SignIn/index'));
 const Overview = lazy(() => import('../pages/Overview/index'));
-const MapDistribution = lazy(() => import('../pages/Map-Distribution'));
+const MapDistribution = lazy(() => import('../pages/MapDistribution'));
 
 const index = () => {
   return (

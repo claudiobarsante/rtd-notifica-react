@@ -9,7 +9,7 @@ const NotificacaoSearch = ({ text, onHandleChange }: Props) => {
     <S.Container>
       <S.SearchIcon />
       <input
-        type="text"
+        type="search"
         placeholder="Pesquise aqui..."
         onChange={onHandleChange}
         value={text}

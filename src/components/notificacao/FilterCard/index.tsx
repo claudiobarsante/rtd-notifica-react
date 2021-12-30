@@ -1,4 +1,4 @@
-import { Filter, Filters } from 'pages/Overview/logic';
+import { Filters } from 'pages/Overview/logic';
 import * as S from './styles';
 import { IoClose } from 'react-icons/io5';
 
@@ -16,17 +16,17 @@ const FilterCard = ({ isVisible, hideCard, filterNotificacoes }: Props) => {
 
       <S.Options>
         <li>
-          <S.OptionButton onClick={() => filterNotificacoes(Filter.ALL)}>
+          <S.OptionButton onClick={() => filterNotificacoes('All')}>
             Todas notificações
           </S.OptionButton>
         </li>
         <li>
-          <S.OptionButton onClick={() => filterNotificacoes(Filter.BEFORE)}>
+          <S.OptionButton onClick={() => filterNotificacoes('Before')}>
             Em diligência com menos de 15 dias
           </S.OptionButton>
         </li>
         <li>
-          <S.OptionButton onClick={() => filterNotificacoes(Filter.AFTER)}>
+          <S.OptionButton onClick={() => filterNotificacoes('After')}>
             Em diligência com mais de 15 dias
           </S.OptionButton>
         </li>

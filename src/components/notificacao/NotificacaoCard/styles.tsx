@@ -80,15 +80,15 @@ export const DiasEmAtrasoCalendar = styled(
   CalendarClock
 )<DiasEmAtrasoCalendarProps>`
   height: 2.9rem;
-  widht: 2.9rem;
+  width: 2.9rem;
 
-  ${props =>
+  ${(props) =>
     props.isLate &&
     css`
       color: var(--color-error);
     `}
 
-  ${props =>
+  ${(props) =>
     !props.isLate &&
     css`
       color: var(--color-success);

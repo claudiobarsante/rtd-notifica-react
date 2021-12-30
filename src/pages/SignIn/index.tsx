@@ -6,7 +6,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai';
 
 //Types
-import { Credentials } from 'hooks/use-auth';
+import { Credentials } from 'hooks/useAuth';
 
 //Styles
 import * as S from './styles';
@@ -14,10 +14,10 @@ import Button from 'components/Button';
 import Input from 'components/Input';
 
 import splashImg from 'assets/splash.png';
-import { useAuth } from 'hooks/use-auth';
+import { useAuth } from 'hooks/useAuth';
 
 import { Redirect } from 'react-router-dom';
-import ActivityIndicator from 'components/Activity-Indicator';
+import ActivityIndicator from 'components/ActivityIndicator';
 
 const SignInSchema = yup.object().shape({
   email: yup

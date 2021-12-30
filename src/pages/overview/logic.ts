@@ -1,20 +1,9 @@
-import { Notificacao } from 'hooks/use-notificacao';
+import { Notificacao } from 'hooks/use-Notificacao';
 import filter from 'lodash/filter';
 
-export enum Direction {
-  PREVIOUS = 'previous',
-  NEXT = 'next'
-}
+export type Directions = 'Previous' | 'Next';
 
-export type Directions = Direction.PREVIOUS | Direction.NEXT;
-
-export enum Filter {
-  ALL = 'all',
-  BEFORE = 'before',
-  AFTER = 'after'
-}
-
-export type Filters = Filter.ALL | Filter.BEFORE | Filter.AFTER;
+export type Filters = 'All' | 'Before' | 'After';
 
 export class Pagination {
   static getTotalNumberOfPages(length: number, recordsPerPage: number) {
@@ -47,12 +36,12 @@ export class Pagination {
     totalPages: number
   ) {
     let newPage = 0;
-    if (direction === Direction.PREVIOUS) {
+    if (direction === 'Previous') {
       if (currentPage === 1) return currentPage;
       newPage = currentPage - 1;
     }
 
-    if (direction === Direction.NEXT) {
+    if (direction === 'Next') {
       if (currentPage === totalPages) return currentPage;
       newPage = currentPage + 1;
     }
@@ -91,13 +80,13 @@ export class Search {
 
     let filtered: Notificacao[] = [];
 
-    if (filter === Filter.ALL) {
-      filtered = [...todasNotificacoes];
-    } else if (filter === Filter.BEFORE) {
+    if (filter === 'All') filtered = [...todasNotificacoes];
+    if (filter === 'Before') {
       filtered = todasNotificacoes.filter(
         (notificacao) => notificacao.diasEmAtraso <= days
       );
-    } else if (filter === Filter.AFTER) {
+    }
+    if (filter === 'After') {
       filtered = todasNotificacoes.filter(
         (notificacao) => notificacao.diasEmAtraso > days
       );
